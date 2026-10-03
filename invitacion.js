@@ -18,8 +18,8 @@ const mensajeEstado = document.getElementById('mensaje-estado');
 // Función para cargar los datos del invitado
 async function cargarInvitacion() {
     if (!token) {
-        console.log("3. No hay token en la URL, deteniendo proceso.");
-        if (tituloNombre) tituloNombre.textContent = "Enlace no válido";
+        console.log("3. Modo vista previa (sin token en la URL).");
+        if (tituloNombre) tituloNombre.textContent = "Familia & Amigos";
         return;
     }
 
@@ -33,7 +33,7 @@ async function cargarInvitacion() {
         if (respuesta.ok) {
             tituloNombre.textContent = invitado.nombres;
 
-            // Validamos si ya pasó el tiempo límite de modificación[cite: 1]
+            // Validamos si ya pasó el tiempo límite de modificación
             const ahora = new Date();
             const fechaLimite = new Date(invitado.limiteModificacion);
 
@@ -61,6 +61,11 @@ async function cargarInvitacion() {
 
 // Función para enviar la respuesta de asistencia
 async function enviarRespuesta(estado) {
+    if (!token) {
+        if (mensajeEstado) mensajeEstado.textContent = `¡Gracias! Respuesta de prueba registrada: ${estado}`;
+        return;
+    }
+
     try {
         const respuesta = await fetch(`${API_URL}/invitacion/${token}`, {
             method: 'PUT',
@@ -89,7 +94,7 @@ if (btnNoAsistire) btnNoAsistire.addEventListener('click', () => enviarRespuesta
 cargarInvitacion();
 
 // --- LÓGICA DEL CONTADOR DE TIEMPO ---
-const fechaBoda = new Date(2026, 12, 18, 15, 0, 0).getTime();
+const fechaBoda = new Date(2026, 11, 18, 15, 0, 0).getTime();
 const elementoDias = document.getElementById('dias');
 const elementoHoras = document.getElementById('horas');
 const elementoMinutos = document.getElementById('minutos');

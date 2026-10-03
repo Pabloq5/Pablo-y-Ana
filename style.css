@@ -1,24 +1,38 @@
-/* 1. Importar fuentes elegantes de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap');
+/* ==========================================================================
+   1. IMPORTACIÓN DE FUENTES & VARIABLES DE COLOR
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
-/* 2. Variables de color (basadas en tu imagen de referencia) */
 :root {
-    --bg-color: #f6f5f0; /* Color beige/hueso de fondo */
-    --card-bg: #ffffff; /* Fondo de las tarjetas */
-    --text-main: #333333;
-    --text-muted: #666666;
-    --primary-green: #677864; /* Verde salvia para botones */
-    --primary-green-hover: #536250;
-    --font-heading: 'Cormorant Garamond', serif;
-    --font-body: 'Montserrat', sans-serif;
+    --bg-color: #f7f6f0;           /* Fondo beige cálido / hueso */
+    --card-bg: #ffffff;           /* Fondo de tarjetas estándar */
+    --card-warm-bg: #faf8f3;      /* Fondo de tarjetas crema */
+    --text-main: #2e332c;         /* Texto principal grafito suave */
+    --text-muted: #666c61;        /* Texto secundario atenuado */
+    --olive-dark: #444e41;        /* Verde olivo intenso (botones) */
+    --olive-dark-hover: #333c31;  /* Hover verde olivo */
+    --olive-medium: #5b6555;      /* Verde olivo medio */
+    --olive-light: #839274;       /* Verde salvia suave */
+    --sage-thanks: #cbd0c3;       /* Verde salvia claro para agradecimiento */
+    --border-subtle: rgba(0, 0, 0, 0.05);
+    
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-cursive: 'Great Vibes', cursive;
 }
 
-/* 3. Estilos Generales */
+/* ==========================================================================
+   2. ESTILOS GENERALES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -26,16 +40,45 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    font-weight: 400;
+    font-weight: 500;
 }
 
-/* 4. Sección Principal (Hero) */
+section, footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Tarjeta estándar */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+}
+
+.section-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8e8980;
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* ==========================================================================
+   3. SECCIÓN PRINCIPAL (HERO)
+   ========================================================================== */
 .hero-section {
     min-height: 100vh;
+    max-width: 100%;
     background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.45) 100%), url('image/paisaje.jpg') center/cover;
     display: flex;
     align-items: center;
@@ -45,7 +88,7 @@ h1, h2, h3 {
 }
 
 .hero-content {
-    max-width: 1200px;
+    max-width: 1100px;
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -155,34 +198,9 @@ h1, h2, h3 {
     letter-spacing: 2px;
 }
 
-/* Contenedor central para las demás secciones */
-section, footer {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-/* 5. Clases comunes para las "Tarjetas" */
-.card {
-    background-color: var(--card-bg);
-    padding: 40px;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-}
-
-.section-eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #8e8980;
-    font-weight: 500;
-    margin-bottom: 12px;
-    display: block;
-}
-
-/* --- 2. Tarjeta: Nuestra Historia --- */
+/* ==========================================================================
+   4. NUESTRA HISTORIA
+   ========================================================================== */
 .story-card {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
@@ -223,6 +241,8 @@ section, footer {
     font-size: 0.88rem;
     font-weight: 500;
     transition: all 0.25s ease;
+    background: transparent;
+    cursor: pointer;
     width: fit-content;
 }
 
@@ -300,7 +320,9 @@ section, footer {
     opacity: 0.75;
 }
 
-/* --- 3. Tarjetas: Ubicaciones (Ceremonia y Recepción) --- */
+/* ==========================================================================
+   5. UBICACIONES (CEREMONIA Y RECEPCIÓN)
+   ========================================================================== */
 .locations-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -418,17 +440,22 @@ section, footer {
     height: 14px;
 }
 
-/* --- 4. Tarjeta: Cuenta Regresiva (Faltan para el gran día) --- */
+/* ==========================================================================
+   6. CUENTA REGRESIVA (FALTAN PARA EL GRAN DÍA)
+   ========================================================================== */
+.countdown-section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .countdown-card {
-    background: linear-gradient(rgba(246, 243, 237, 0.72), rgba(246, 243, 237, 0.84)), url('image/paisaje.jpg') center/cover;
+    background: linear-gradient(rgba(246, 243, 237, 0.76), rgba(246, 243, 237, 0.86)), url('image/paisaje.jpg') center/cover;
     position: relative;
-    max-width: 1000px;
-    margin: 30px auto;
-    width: calc(100% - 40px);
+    width: 100%;
     border-radius: 18px;
-    padding: 50px 30px;
+    padding: 45px 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-subtle);
     overflow: hidden;
     text-align: center;
 }
@@ -451,11 +478,13 @@ section, footer {
 .countdown-eyebrow {
     display: block;
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     letter-spacing: 4px;
-    color: #5a6056;
+    color: #4b5247;
     margin-bottom: 25px;
     text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
 }
 
 #timer {
@@ -476,7 +505,7 @@ section, footer {
     display: block;
     font-family: var(--font-heading);
     font-size: 3rem;
-    color: #2e332c;
+    color: #272d24;
     line-height: 1;
     font-weight: 400;
 }
@@ -494,122 +523,236 @@ section, footer {
     background-color: rgba(70, 80, 68, 0.25);
 }
 
-/* --- 5. Tarjeta: Código de Vestimenta --- */
+/* ==========================================================================
+   7. CÓDIGO DE VESTIMENTA (Diseño fiel a imagen de referencia)
+   ========================================================================== */
 .dresscode-card {
-    display: grid;
-    grid-template-columns: 1.25fr 0.9fr 1fr;
-    gap: 30px;
-    align-items: center;
-    padding: 45px 40px;
-    text-align: left;
-    background: #faf8f3;
+    background-color: #ffffff; /* Mismo color del fondo de la sección (#f7f6f0) */
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
+    padding: 35px 45px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-.dresscode-icon {
-    width: 30px;
-    height: 30px;
-    color: #485245;
-    margin-bottom: 8px;
+.dresscode-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.85fr auto 0.9fr;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    z-index: 2;
 }
 
-.dresscode-col-info h3 {
+/* Columna Izquierda: Información posicionada más arriba */
+.dresscode-left {
+    text-align: left;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+.dresscode-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.dresscode-hanger-wrap {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hanger-icon {
+    width: 34px;
+    height: 34px;
+    color: #272d24;
+}
+
+.dresscode-v-sep {
+    width: 1px;
+    height: 34px;
+    background-color: #ccc7bc;
+    flex-shrink: 0;
+}
+
+.dresscode-title {
     font-family: var(--font-heading);
-    font-size: 1.7rem;
-    color: #2e332c;
+    font-size: 1.85rem;
+    color: #272d24;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.dresscode-subtitle {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #444c3f;
     margin-bottom: 4px;
     font-weight: 500;
 }
 
-.dresscode-type {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #485245;
-    margin-bottom: 10px;
-}
-
-.dresscode-palette-desc {
-    font-size: 0.88rem;
-    color: #6e736c;
-    margin-bottom: 18px;
-    line-height: 1.5;
+.dresscode-desc {
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    color: #6a7065;
+    line-height: 1.45;
+    margin-bottom: 12px;
 }
 
 .dresscode-swatches {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 14px;
 }
 
 .swatch {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-    border: 2.5px solid #ffffff;
-    transition: transform 0.2s;
-    cursor: default;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    border: 2px solid #ffffff;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .swatch:hover {
     transform: scale(1.15);
 }
 
-.dresscode-col-visual {
+/* Bloque de colores a evitar */
+.dresscode-avoid-block {
+    margin-top: 2px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(70, 80, 68, 0.18);
+}
+
+.dresscode-avoid-text {
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    color: #555d50;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.dresscode-swatches-avoid {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.avoid-swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: default;
+}
+
+.avoid-swatch-name {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: #666c60;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.avoid-swatch-footnote {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.73rem;
+    color: #7a8075;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+/* Columna Central: Pareja Ilustrada sin marco rectangular */
+.dresscode-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.couple-illustration {
-    width: 100%;
-    max-width: 155px;
-    height: auto;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+.dresscode-couple-img {
+    max-height: 330px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+    display: block;
+    background: transparent;
 }
 
-.avoid-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 12px;
+/* Divisor Vertical */
+.dresscode-divider-line {
+    width: 1px;
+    height: 220px;
+    background-color: #d6d1c4;
+}
+
+/* Columna Derecha: Evita */
+.dresscode-right {
+    text-align: left;
+}
+
+.avoid-heading {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.55rem;
+    color: #333b2e;
+    margin-bottom: 16px;
+    font-weight: 500;
 }
 
 .avoid-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .avoid-list li {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-    font-size: 0.88rem;
-    color: #555c53;
+    gap: 14px;
+    font-size: 0.9rem;
+    color: #555d50;
 }
 
-.avoid-icon {
-    font-size: 1.15rem;
+.avoid-icon-box {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2e3529;
+    flex-shrink: 0;
 }
 
-.botanical-branch-dresscode {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 85px;
-    height: 85px;
-    opacity: 0.7;
-    pointer-events: none;
+.avoid-icon-box svg {
+    width: 24px;
+    height: 24px;
 }
 
-/* --- 6. Tarjeta: Un Mensaje Para Ti --- */
+/* ==========================================================================
+   8. UN MENSAJE PARA TI
+   ========================================================================== */
 .message-card {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -619,7 +762,7 @@ section, footer {
     text-align: left;
     background: #ffffff;
     border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-subtle);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
@@ -632,8 +775,8 @@ section, footer {
 
 .message-text-col h3 {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: #2e332c;
+    font-size: 1.85rem;
+    color: #272d24;
     margin-bottom: 14px;
     font-weight: 500;
 }
@@ -647,22 +790,20 @@ section, footer {
 
 .message-signature-wrap {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
+    align-items: baseline;
+    gap: 12px;
 }
 
 .message-signature {
     font-family: var(--font-cursive);
     font-size: 2.8rem;
-    color: #2e332c;
+    color: #272d24;
     line-height: 1;
 }
 
 .signature-heart {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #485245;
-    margin-left: 25px;
 }
 
 .message-photo-col {
@@ -681,242 +822,311 @@ section, footer {
     display: block;
 }
 
-/* --- Sección: Mesa de Regalos --- */
-.gifts-intro {
-    max-width: 650px;
-    margin: 0 auto 30px auto;
-    color: var(--text-muted);
-    font-size: 0.95rem;
+/* ==========================================================================
+   9. MESA DE REGALOS (Diseño fiel a imagen de referencia)
+   ========================================================================== */
+.gifts-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-.gifts-grid {
+.gifts-split-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+}
+
+.gifts-text-col {
+    padding: 40px 45px;
     text-align: left;
 }
 
-.gift-option {
-    background-color: #faf9f5;
-    padding: 30px 25px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-}
-
-.gift-icon {
-    font-size: 2.2rem;
-    margin-bottom: 12px;
-}
-
-.gift-option h4 {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--primary-green);
+.gifts-icon-box {
+    width: 32px;
+    height: 32px;
+    color: #2c3328;
     margin-bottom: 10px;
 }
 
-.gift-option p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 15px;
+.gifts-icon-box svg {
+    width: 30px;
+    height: 30px;
 }
 
-.bank-details,
-.store-links {
-    background-color: #ffffff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-green);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    margin-top: auto;
+.gifts-heading {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    color: #262c23;
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
-.bank-details p,
-.store-item p {
+.gifts-desc {
+    font-size: 0.94rem;
+    color: #646a60;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    max-width: 380px;
+}
+
+.btn-gift-toggle {
+    margin: 0;
+    font-size: 0.88rem;
+    padding: 10px 24px;
+}
+
+
+
+.gift-bank-box {
+    background-color: #faf9f5;
+    padding: 18px 20px;
+    border-radius: 10px;
+    border-left: 3px solid var(--olive-dark);
+}
+
+.gift-bank-box h4 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--olive-dark);
     margin-bottom: 6px;
+}
+
+.gift-bank-box p {
+    font-size: 0.86rem;
+    color: #666c61;
+    margin-bottom: 10px;
+}
+
+.bank-info-grid p {
+    font-size: 0.88rem;
     color: var(--text-main);
-    font-size: 0.9rem;
+    margin-bottom: 4px;
 }
 
-.bank-details p:last-child,
-.store-item:last-child p {
-    margin-bottom: 0;
+.gifts-image-col {
+    height: 100%;
+    min-height: 250px;
+    overflow: hidden;
+    background-color: #fbf9f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* --- Sección: Información Adicional --- */
+.gifts-box-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==========================================================================
+   10. INFORMACIÓN ADICIONAL (Diseño organizado en 3 columnas)
+   ========================================================================== */
+.info-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    border: 1px solid var(--border-subtle);
+    padding: 45px 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.info-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: #272d24;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    text-align: left;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: center;
 }
 
 .info-item {
     background-color: #faf9f5;
-    padding: 30px 25px;
-    border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 14px;
+    padding: 32px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.25s ease;
+}
+
+.info-item:hover {
+    background-color: #ffffff;
+    border-color: #d6d2c6;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
 }
 
 .info-icon {
-    font-size: 2rem;
-    margin-bottom: 12px;
-    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(68, 78, 65, 0.09);
+    color: var(--olive-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+}
+
+.info-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
 .info-item h4 {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--primary-green);
-    margin-bottom: 8px;
+    font-size: 1.45rem;
+    color: var(--olive-dark);
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.25;
 }
 
 .info-item p {
+    font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
+    color: #63695e;
+    line-height: 1.65;
+    margin: 0;
 }
 
-/* --- Sección: Agradecimiento (Footer) --- */
-.thank-you-section {
-    padding-bottom: 80px;
+/* ==========================================================================
+   11. CONFIRMACIÓN DE ASISTENCIA (RSVP)
+   ========================================================================== */
+.interaction-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-
-.thank-you-card {
-    background: linear-gradient(rgba(246, 245, 240, 0.8), rgba(246, 245, 240, 0.95));
-    border: 1px solid rgba(103, 120, 100, 0.2);
-    padding: 60px 30px;
-    text-align: center;
-}
-
-.thank-you-text {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 15px auto 25px auto;
-}
-
-.thank-you-names {
-    font-family: var(--font-cursive);
-    font-size: 4rem;
-    color: var(--primary-green);
-    margin-bottom: 10px;
-}
-
-.thank-you-date {
-    letter-spacing: 5px;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-}
-
-
-
 
 .rsvp-card {
-    max-width: 620px;
+    max-width: 580px;
     width: 100%;
     margin: 0 auto;
-    padding: 35px 40px;
+    padding: 38px 45px;
     text-align: left;
-    background-color: var(--card-bg);
-    border-radius: 16px;
+    background-color: #ffffff;
+    border-radius: 18px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-subtle);
 }
 
-
-
+.rsvp-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 26px;
+}
 
 .rsvp-icon-wrapper {
-    width: 44%;
-    min-width: 160px;
-    position: relative;
-    padding: 12px;
+    width: auto;
+    min-width: unset;
+    padding: 0;
+    margin-top: 3px;
+    color: #2b3327;
+    flex-shrink: 0;
 }
-
 
 .rsvp-icon {
-    width: 44px;
-    height: 44px;
-    color: #384236;
+    width: 34px;
+    height: 34px;
 }
 
-.rsvp-header-text h3 {
+.rsvp-title {
     font-family: var(--font-heading);
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 500;
-    color: #2b322a;
-    margin: 0 0 4px 0;
+    color: #272d24;
+    margin-bottom: 4px;
     line-height: 1.2;
-    text-align: left;
 }
 
-.rsvp-header-text p {
+.rsvp-subtitle {
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: #70756e;
+    font-size: 0.92rem;
+    color: #6f756b;
     margin: 0;
     line-height: 1.4;
 }
 
-
 .rsvp-buttons {
-
     display: flex;
     gap: 16px;
     align-items: center;
     flex-wrap: wrap;
-
 }
 
-
-.btn-rsvp {
-    font-size: 0.95rem;
-    line-height: 1.3;
-}
-
-
+/* Estilos de botones RSVP con alta especificidad para evitar fondos grises */
+#btn-yes.btn-confirm,
 .btn-confirm {
-    background-color: #444e41;
-    color: #ffffff;
-    border: 1.5px solid #444e41;
+    background-color: var(--olive-dark) !important;
+    color: #ffffff !important;
+    border: 1.5px solid var(--olive-dark) !important;
+    border-radius: 50px !important;
+    padding: 12px 28px !important;
+    font-family: var(--font-body);
+    font-size: 0.92rem !important;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(68, 78, 65, 0.18);
 }
 
-
-
-.btn-confirm:hover:not(:disabled) {
-    background-color: #343d31;
-    border-color: #343d31;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(68, 78, 65, 0.25);
+#btn-yes.btn-confirm:hover:not(:disabled) {
+    background-color: var(--olive-dark-hover) !important;
+    border-color: var(--olive-dark-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(68, 78, 65, 0.28);
 }
 
-
+#btn-no.btn-decline,
 .btn-decline {
-    background-color: #ffffff;
-    color: #444e41;
-    border: 1.5px solid #d4d1c9;
-
+    background-color: #ffffff !important;
+    color: var(--olive-dark) !important;
+    border: 1.5px solid #cac6bc !important;
+    border-radius: 50px !important;
+    padding: 12px 28px !important;
+    font-family: var(--font-body);
+    font-size: 0.92rem !important;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
-.btn-decline:hover:not(:disabled) {
-    background-color: #f8f7f4;
-    border-color: #b5b2a9;
-    color: #2c3329;
-    transform: translateY(-1px);
+#btn-no.btn-decline:hover:not(:disabled) {
+    background-color: #f7f6f2 !important;
+    border-color: #b5b0a3 !important;
+    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
 }
 
-.btn-rsvp:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
-    transform: none;
+/* En caso de estar deshabilitados temporalmente, NO perder el color */
+#btn-yes:disabled,
+#btn-no:disabled {
+    opacity: 0.85;
+    cursor: pointer;
     box-shadow: none;
-
 }
 
 .btn-rsvp-icon {
@@ -925,150 +1135,185 @@ section, footer {
     flex-shrink: 0;
 }
 
-
 #mensaje-estado {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: 0.92rem;
-    color: var(--primary-green);
+    color: var(--olive-dark);
     font-weight: 500;
 }
 
+/* ==========================================================================
+   12. AGRADECIMIENTO (Diseño fiel a imagen de referencia)
+   ========================================================================== */
+.thank-you-section {
+    padding-top: 20px;
+    padding-bottom: 90px;
+}
 
+.thank-you-card {
+    background-color: var(--sage-thanks);
+    border-radius: 18px;
+    border: 1px solid rgba(103, 120, 100, 0.15);
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
 
+.thanks-branch-left {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 150px;
+    pointer-events: none;
+    opacity: 0.85;
+}
 
+.thanks-branch-right {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 150px;
+    pointer-events: none;
+    opacity: 0.85;
+}
 
-/* Estilos para el botón flotante de música */
+.thank-you-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.thank-you-eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    color: #555d50;
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+.thank-you-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    color: #272f23;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 auto 24px auto;
+}
+
+.thank-you-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.thanks-line {
+    width: 60px;
+    height: 1px;
+    background-color: #838d7c;
+}
+
+.thanks-heart {
+    font-size: 1.2rem;
+    color: #454d3f;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   13. BOTÓN FLOTANTE DE MÚSICA
+   ========================================================================== */
 .floating-music-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: var(--primary-green);
+    background-color: var(--olive-dark);
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 12px 22px;
     border-radius: 30px;
     font-family: var(--font-body);
     font-size: 14px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 1000; /* Asegura que siempre esté por encima de las fotos y el texto */
-    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    z-index: 1000;
+    transition: all 0.25s ease;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .floating-music-btn:hover {
-    background-color: var(--primary-green-hover);
-    transform: scale(1.05);
+    background-color: var(--olive-dark-hover);
+    transform: scale(1.04);
 }
 
+/* ==========================================================================
+   14. DISEÑO RESPONSIVO (MÓVIL & TABLET)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .dresscode-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
 
+    .dresscode-left {
+        align-self: center;
+        text-align: center;
+    }
 
+    .dresscode-header-row {
+        justify-content: center;
+    }
 
-/* 8. Botones */
-button {
-    background-color: var(--primary-green);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px 5px;
+    .dresscode-swatches {
+        justify-content: center;
+    }
+
+    .dresscode-swatches-avoid {
+        justify-content: center;
+    }
+
+    .dresscode-divider-line {
+        display: none;
+    }
+
+    .dresscode-center {
+        order: 2;
+    }
+
+    .dresscode-right {
+        order: 3;
+        text-align: center;
+    }
+
+    .avoid-list {
+        align-items: center;
+    }
 }
 
-button:hover {
-    background-color: var(--primary-green-hover);
-}
-
-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-/* 9. Diseño Responsivo (Para Celulares) */
 @media (max-width: 768px) {
-    /* Colapsos de Grid a 1 Columna */
-    .story-countdown-section,
-    .locations-section,
-    .dresscode-message-section,
-    .interaction-section,
-    .gallery-contact-section,
-    .gifts-grid,
-    .info-grid {
-        grid-template-columns: 1fr; 
+    section, footer {
+        padding: 20px 15px;
     }
 
     .card {
         padding: 30px 20px;
     }
 
-    /* Hero en Móvil */
-    .hero-section {
-        padding: 60px 20px;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .hero-content {
-        text-align: center;
-    }
-
-    .hero-title {
-        font-size: 3.2rem;
-    }
-
-    .hero-tagline {
-        font-size: 1.05rem;
-    }
-
-    .hero-guest-box {
-        margin: 0 auto 20px auto;
-        font-size: 0.82rem;
-        padding: 6px 14px;
-    }
-
-    .btn-hero {
-        margin: 0 auto;
-    }
-
-    .hero-scroll {
-        display: none;
-    }
-
-    .hero-botanical-left {
-        width: 80px;
-        height: 100px;
-        opacity: 0.3;
-    }
-
-    /* Nuestra Historia en Móvil */
-    .story-card {
+    /* Ubicaciones a 1 Columna */
+    .locations-section {
         grid-template-columns: 1fr;
-        padding: 35px 20px;
-        gap: 30px;
     }
 
-    .story-heading {
-        font-size: 1.8rem;
-    }
-
-    .polaroids-group {
-        width: 250px;
-        height: 230px;
-        margin: 0 auto;
-    }
-
-    .polaroid-item {
-        width: 140px;
-        height: 170px;
-    }
-
-    /* Ubicaciones en Móvil */
     .location-card {
         flex-direction: column;
     }
@@ -1076,7 +1321,6 @@ button:disabled {
     .location-img-wrap {
         width: 100%;
         min-height: 200px;
-        padding: 10px;
     }
 
     .location-info {
@@ -1084,15 +1328,29 @@ button:disabled {
         padding: 15px 20px 25px 20px;
     }
 
-    /* Cuenta Regresiva en Móvil */
+    /* Nuestra Historia en Móvil */
+    .story-card {
+        grid-template-columns: 1fr;
+        padding: 35px 20px;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .story-heading {
+        font-size: 1.9rem;
+    }
+
+    .btn-pill-outline {
+        margin: 0 auto;
+    }
+
+    /* Cuenta Regresiva Móvil */
     .countdown-card {
-        margin: 20px auto;
         padding: 35px 15px;
-        width: calc(100% - 30px);
     }
 
     .countdown-eyebrow {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         letter-spacing: 2px;
         margin-bottom: 20px;
     }
@@ -1109,7 +1367,7 @@ button:disabled {
     }
 
     .timer-col span {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
 
     .timer-col p {
@@ -1120,35 +1378,26 @@ button:disabled {
         height: 35px;
     }
 
-    /* Código de Vestimenta en Móvil */
+    /* Código de Vestimenta Móvil */
     .dresscode-card {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-        gap: 25px;
-        text-align: center;
+        padding: 35px 20px;
     }
 
-    .dresscode-swatches {
-        justify-content: center;
+    .dresscode-leaf-tl {
+        width: 95px;
+        opacity: 0.6;
     }
 
-    .dresscode-col-visual {
-        order: 2;
-        margin: 10px 0;
+    .dresscode-leaf-br {
+        width: 80px;
+        opacity: 0.6;
     }
 
-    .dresscode-col-avoid {
-        order: 3;
-        text-align: left;
+    .dresscode-couple-img {
+        max-height: 260px;
     }
 
-    .botanical-branch-dresscode {
-        width: 60px;
-        height: 60px;
-        opacity: 0.4;
-    }
-
-    /* Un Mensaje Para Ti en Móvil */
+    /* Un Mensaje Para Ti Móvil */
     .message-card {
         grid-template-columns: 1fr;
         padding: 30px 20px;
@@ -1156,68 +1405,101 @@ button:disabled {
         text-align: center;
     }
 
-    .message-text-col h3 {
-        font-size: 1.6rem;
-    }
-
     .message-signature-wrap {
-        align-items: center;
+        justify-content: center;
     }
 
     .message-photo-col {
         height: 200px;
     }
 
-    /* Otros Ajustes */
-    .thank-you-card {
-        padding: 40px 20px;
+    /* Mesa de Regalos Móvil */
+    .gifts-split-layout {
+        grid-template-columns: 1fr;
     }
 
-    .thank-you-names {
-        font-size: 3rem;
+    .gifts-text-col {
+        padding: 30px 20px;
+        text-align: center;
     }
 
+    .gifts-icon-box {
+        margin: 0 auto 10px auto;
+    }
+
+    .btn-gift-toggle {
+        margin: 0 auto;
+    }
+
+    .gifts-image-col {
+        height: 220px;
+    }
+
+    /* Información Adicional Móvil */
+    .info-card {
+        padding: 30px 20px;
+    }
+
+    .info-title {
+        font-size: 1.85rem;
+        margin-bottom: 22px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .info-item {
+        padding: 24px 18px;
+    }
+
+    /* Confirmación Asistencia (RSVP) Móvil */
     .rsvp-card {
-        padding: 28px 20px;
+        padding: 30px 20px;
+        text-align: center;
     }
 
     .rsvp-header {
-        gap: 14px;
-        margin-bottom: 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
-    .rsvp-icon {
-        width: 36px;
-        height: 36px;
+    .rsvp-title {
+        text-align: center;
+        font-size: 1.55rem;
     }
 
-    .rsvp-header-text h3 {
-        font-size: 1.4rem;
+    .rsvp-subtitle {
+        text-align: center;
     }
 
-    .rsvp-header-text p {
-        font-size: 0.85rem;
-    }
-
-    .rsvp-buttons {
-        gap: 12px;
-        width: 100%;
-    }
-
-    .btn-rsvp {
-        flex: 1 1 auto;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
     .rsvp-buttons {
         flex-direction: column;
         width: 100%;
+        gap: 12px;
     }
 
-    .btn-rsvp {
+    #btn-yes.btn-confirm,
+    #btn-no.btn-decline {
         width: 100%;
+        justify-content: center;
+    }
+
+    /* Agradecimiento Móvil */
+    .thank-you-card {
+        padding: 50px 20px;
+    }
+
+    .thanks-branch-left,
+    .thanks-branch-right {
+        width: 45px;
+        height: 90px;
+        opacity: 0.35;
+    }
+
+    .thank-you-title {
+        font-size: 1.8rem;
     }
 }
