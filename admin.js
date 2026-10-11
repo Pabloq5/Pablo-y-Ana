@@ -9,13 +9,23 @@ const formInvitado = document.getElementById('form-invitado');
 const inputNombre = document.getElementById('nombre-invitado');
 const tablaInvitados = document.getElementById('tabla-invitados');
 
+// Función para transformar el nombre en un formato limpio para la URL
+// Ej: "Familia Pérez" -> "Familia-Perez"
+function generarSlug(nombre) {
+    return nombre
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Quita tildes
+        .trim()
+        .replace(/[^a-zA-Z0-9]+/g, '-')     // Cambia espacios y caracteres raros por guión
+        .replace(/^-+|-+$/g, '');           // Limpia guiones al inicio y final
+}
+
 // Evento: Al enviar el formulario para crear un invitado
 formInvitado.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Evita que la página se recargue por defecto
+    e.preventDefault();
     const nombre = inputNombre.value;
 
     try {
-        // Hacemos la petición al servidor para guardar en MongoDB
         const respuesta = await fetch(`${API_URL}/invitados`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -23,8 +33,8 @@ formInvitado.addEventListener('submit', async (e) => {
         });
 
         if (respuesta.ok) {
-            inputNombre.value = ''; // Limpiamos el campo de texto
-            cargarInvitados(); // Recargamos la tabla para ver el nuevo enlace
+            inputNombre.value = '';
+            cargarInvitados();
         } else {
             console.error("Error del servidor al intentar guardar");
         }
@@ -39,23 +49,20 @@ async function cargarInvitados() {
         const respuesta = await fetch(`${API_URL}/invitados`);
         const invitados = await respuesta.json();
         
-        // Limpiamos la tabla antes de llenarla
         tablaInvitados.innerHTML = '';
 
         invitados.forEach(invitado => {
-            // 👇 SOLUCIÓN A PRUEBA DE BALAS PARA EL ENLACE 👇
-            // Obtenemos la ruta base sin importar cómo se llame la carpeta en GitHub
             const rutaBase = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+            const slug = generarSlug(invitado.nombres);
             
-            // Construimos el enlace forzando que abra el archivo de la invitación para que solo puedan ver ese apartado[cite: 1]
-            const enlaceUnico = `${rutaBase}/invitacion.html?token=${invitado.token}`;
+            // La URL ahora solo contiene "invitacion.html" y el nombre de la persona
+            // Ej: https://tudominio.com/invitacion.html?Familia-Perez
+            const enlaceUnico = `${rutaBase}/invitacion.html?${slug}`;
             
-            // Asignamos el color según el estado
             let claseEstado = 'pendiente';
             if(invitado.estadoAsistencia === 'Asistirá') claseEstado = 'asistira';
             if(invitado.estadoAsistencia === 'No asistirá') claseEstado = 'no-asistira';
 
-            // Insertamos la fila en la tabla
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>${invitado.nombres}</td>
@@ -76,16 +83,10 @@ async function cargarInvitados() {
 // ----------------------------------------------------
 // LÓGICA DE TIEMPO REAL (SOCKET.IO)
 // ----------------------------------------------------
-// El servidor nos avisará cuando alguien presione los botones de la invitación
 socket.on('actualizacionAsistencia', (datos) => {
-    // Buscamos la etiqueta de estado específica de ese invitado en la tabla
     const estadoBadge = document.getElementById(`estado-${datos.token}`);
-    
     if (estadoBadge) {
-        // Actualizamos el texto a tiempo real
         estadoBadge.textContent = datos.nuevoEstado;
-        
-        // Actualizamos el color
         estadoBadge.className = 'badge'; 
         if(datos.nuevoEstado === 'Asistirá') estadoBadge.classList.add('asistira');
         if(datos.nuevoEstado === 'No asistirá') estadoBadge.classList.add('no-asistira');
@@ -98,20 +99,19 @@ cargarInvitados();
 // Función para eliminar un invitado y anular su enlace
 async function eliminarInvitacion(token) {
     const confirmar = confirm("¿Estás seguro? El enlace dejará de funcionar permanentemente.");
-    
-    if (confirmar) {
-        try {
-            const respuesta = await fetch(`${API_URL}/invitados/${token}`, {
-                method: 'DELETE'
-            });
+    if (!confirmar) return;
 
-            if (respuesta.ok) {
-                cargarInvitados(); // Recargamos la tabla para que desaparezca visualmente
-            } else {
-                alert("Hubo un problema al intentar eliminar.");
-            }
-        } catch (error) {
-            console.error("Error al eliminar:", error);
+    try {
+        const respuesta = await fetch(`${API_URL}/invitados/${token}`, {
+            method: 'DELETE'
+        });
+
+        if (respuesta.ok) {
+            cargarInvitados();
+        } else {
+            alert("No se pudo eliminar al invitado.");
         }
+    } catch (error) {
+        console.error("Error al eliminar:", error);
     }
 }

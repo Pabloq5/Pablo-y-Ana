@@ -3,6 +3,7 @@
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Dancing+Script&family=Parisienne&family=Pinyon+Script&display=swap');
 
 :root {
     --bg-color: #f7f6f0;           /* Fondo beige cálido / hueso */
@@ -19,7 +20,7 @@
     
     --font-heading: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-cursive: 'Great Vibes', cursive;
+    --font-cursive: 'Alex Brush', cursive;
 }
 
 /* ==========================================================================
@@ -679,7 +680,9 @@ section, footer {
     color: #7a8075;
     font-style: italic;
     line-height: 1.3;
+    margin-top: 20px;
 }
+
 
 /* Columna Central: Pareja Ilustrada sin marco rectangular */
 .dresscode-center {
@@ -1007,121 +1010,194 @@ section, footer {
 }
 
 /* ==========================================================================
-   11. CONFIRMACIÓN DE ASISTENCIA (RSVP)
+   11. CONFIRMACIÓN DE ASISTENCIA (RSVP - Diseño Destacado y Llamativo)
    ========================================================================== */
 .interaction-section {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
 
 .rsvp-card {
-    max-width: 580px;
+    max-width: 660px;
     width: 100%;
     margin: 0 auto;
-    padding: 38px 45px;
-    text-align: left;
-    background-color: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--border-subtle);
+    padding: 55px 45px 50px 45px;
+    text-align: center;
+    background: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
+    border-radius: 22px;
+    box-shadow: 0 14px 40px rgba(68, 78, 65, 0.09), 0 2px 8px rgba(0, 0, 0, 0.02);
+    border: 1.5px solid rgba(132, 147, 119, 0.35);
+    position: relative;
+    overflow: hidden;
 }
 
-.rsvp-header {
+/* Ramas decorativas botánicas en esquinas */
+.rsvp-botanical-tl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 110px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.rsvp-botanical-br {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    height: 110px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.rsvp-content {
+    position: relative;
+    z-index: 2;
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 26px;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Badge R.S.V.P. superior */
+.rsvp-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--olive-dark);
+    background-color: rgba(68, 78, 65, 0.09);
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+/* Emblema con icono */
 .rsvp-icon-wrapper {
-    width: auto;
-    min-width: unset;
-    padding: 0;
-    margin-top: 3px;
-    color: #2b3327;
-    flex-shrink: 0;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #eef1ea 0%, #e2e8db 100%);
+    border: 1.5px solid rgba(132, 147, 119, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--olive-dark);
+    margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(68, 78, 65, 0.1);
 }
 
 .rsvp-icon {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
 }
 
 .rsvp-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: clamp(2.1rem, 4vw, 2.6rem);
     font-weight: 500;
-    color: #272d24;
-    margin-bottom: 4px;
+    color: #242b21;
+    margin-bottom: 12px;
     line-height: 1.2;
 }
 
 .rsvp-subtitle {
     font-family: var(--font-body);
-    font-size: 0.92rem;
-    color: #6f756b;
-    margin: 0;
-    line-height: 1.4;
+    font-size: 0.98rem;
+    color: #5d6459;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+    max-width: 520px;
+}
+
+/* Chip llamativo de aviso de confirmación indispensable */
+.rsvp-notice-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f3efe6;
+    border: 1px solid #ddd6c8;
+    color: #4a5446;
+    font-size: 0.86rem;
+    font-weight: 500;
+    padding: 7px 20px;
+    border-radius: 30px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.rsvp-chip-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--olive-dark);
 }
 
 .rsvp-buttons {
     display: flex;
-    gap: 16px;
+    gap: 18px;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 
-/* Estilos de botones RSVP con alta especificidad para evitar fondos grises */
+/* Botón SÍ, ASISTIRÉ */
 #btn-yes.btn-confirm,
 .btn-confirm {
-    background-color: var(--olive-dark) !important;
+    background: linear-gradient(135deg, #444e41 0%, #353e32 100%) !important;
     color: #ffffff !important;
-    border: 1.5px solid var(--olive-dark) !important;
+    border: 1.5px solid #444e41 !important;
     border-radius: 50px !important;
-    padding: 12px 28px !important;
+    padding: 14px 34px !important;
     font-family: var(--font-body);
-    font-size: 0.92rem !important;
-    font-weight: 500;
+    font-size: 0.98rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.4px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 3px 10px rgba(68, 78, 65, 0.18);
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 18px rgba(53, 62, 50, 0.28);
 }
 
 #btn-yes.btn-confirm:hover:not(:disabled) {
-    background-color: var(--olive-dark-hover) !important;
-    border-color: var(--olive-dark-hover) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 14px rgba(68, 78, 65, 0.28);
+    background: linear-gradient(135deg, #333c30 0%, #262e24 100%) !important;
+    border-color: #262e24 !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(53, 62, 50, 0.38);
 }
 
+/* Botón NO PODRÉ ASISTIR */
 #btn-no.btn-decline,
 .btn-decline {
     background-color: #ffffff !important;
-    color: var(--olive-dark) !important;
-    border: 1.5px solid #cac6bc !important;
+    color: #555c50 !important;
+    border: 1.5px solid #cbc6b9 !important;
     border-radius: 50px !important;
-    padding: 12px 28px !important;
+    padding: 14px 30px !important;
     font-family: var(--font-body);
-    font-size: 0.92rem !important;
+    font-size: 0.95rem !important;
     font-weight: 500;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
     transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 #btn-no.btn-decline:hover:not(:disabled) {
-    background-color: #f7f6f2 !important;
-    border-color: #b5b0a3 !important;
+    background-color: #f7f6f1 !important;
+    border-color: #aba597 !important;
+    color: #2b3327 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.07);
 }
 
-/* En caso de estar deshabilitados temporalmente, NO perder el color */
 #btn-yes:disabled,
 #btn-no:disabled {
     opacity: 0.85;
@@ -1130,16 +1206,25 @@ section, footer {
 }
 
 .btn-rsvp-icon {
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
 }
 
 #mensaje-estado {
-    margin-top: 16px;
-    font-size: 0.92rem;
+    margin-top: 20px;
+    font-size: 0.94rem;
     color: var(--olive-dark);
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#mensaje-estado:not(:empty) {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: rgba(68, 78, 65, 0.09);
+    border: 1px solid rgba(68, 78, 65, 0.2);
+    border-radius: 30px;
 }
 
 /* ==========================================================================
@@ -1187,12 +1272,13 @@ section, footer {
     z-index: 2;
     max-width: 600px;
     margin: 0 auto;
+    
 }
 
 .thank-you-eyebrow {
     display: block;
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 25px;
     letter-spacing: 6px;
     color: #555d50;
     margin-bottom: 14px;
@@ -1237,10 +1323,10 @@ section, footer {
     background-color: var(--olive-dark);
     color: white;
     border: none;
-    padding: 12px 22px;
-    border-radius: 30px;
+    padding: 22px 36px;
+    border-radius: 26px;
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
     z-index: 1000;
@@ -1485,28 +1571,37 @@ section, footer {
 
     /* Confirmación Asistencia (RSVP) Móvil */
     .rsvp-card {
-        padding: 30px 20px;
+        padding: 42px 20px 38px 20px;
         text-align: center;
     }
 
-    .rsvp-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    .rsvp-botanical-tl,
+    .rsvp-botanical-br {
+        width: 65px;
+        height: 80px;
+        opacity: 0.22;
     }
 
     .rsvp-title {
-        text-align: center;
-        font-size: 1.55rem;
+        font-size: 1.85rem;
     }
 
     .rsvp-subtitle {
-        text-align: center;
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    .rsvp-notice-chip {
+        font-size: 0.82rem;
+        padding: 6px 14px;
+        margin-bottom: 24px;
     }
 
     .rsvp-buttons {
         flex-direction: column;
         width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
         gap: 12px;
     }
 
@@ -1514,6 +1609,7 @@ section, footer {
     #btn-no.btn-decline {
         width: 100%;
         justify-content: center;
+        padding: 14px 20px !important;
     }
 
     /* Agradecimiento Móvil */

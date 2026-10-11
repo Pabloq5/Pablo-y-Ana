@@ -58,36 +58,54 @@ app.post('/api/invitados', async (req, res) => {
 // RUTAS PARA LA INVITACIÓN DEL CLIENTE
 // ----------------------------------------------------
 
-// 3. Obtener los datos de un invitado específico por su token
-app.get('/api/invitacion/:token', async (req, res) => {
+// 3. Obtener los datos de un invitado específico (por token o por nombre)
+app.get('/api/invitacion/:identificador', async (req, res) => {
     try {
-        const { token } = req.params;
-        const invitado = await Invitado.findOne({ token });
+        const { identificador } = req.params;
+        
+        // 1. Buscamos primero por token exacto
+        let invitado = await Invitado.findOne({ token: identificador });
+        
+        // 2. Si no existe por token, buscamos comparando con el nombre normalizado
+        if (!invitado) {
+            const cleanIdent = identificador.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const todos = await Invitado.find();
+            invitado = todos.find(inv => {
+                const cleanNombre = (inv.nombres || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                return cleanNombre === cleanIdent;
+            });
+        }
         
         if (!invitado) {
             return res.status(404).json({ error: 'Invitación no encontrada' });
         }
         
-        // Devolvemos los datos para que el frontend pueda mostrar el nombre
         res.json(invitado);
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener la invitación' });
     }
 });
 
-// 3. Confirmar o rechazar asistencia (Lo usan los invitados en su enlace)
-app.put('/api/invitacion/:token', async (req, res) => {
+// 4. Confirmar o rechazar asistencia (soporta token o nombre)
+app.put('/api/invitacion/:identificador', async (req, res) => {
     try {
-        const { token } = req.params;
-        const { estadoAsistencia } = req.body; // 'Asistirá' o 'No asistirá'
+        const { identificador } = req.params;
+        const { estadoAsistencia } = req.body;
 
-        const invitado = await Invitado.findOne({ token });
+        let invitado = await Invitado.findOne({ token: identificador });
+        if (!invitado) {
+            const cleanIdent = identificador.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const todos = await Invitado.find();
+            invitado = todos.find(inv => {
+                const cleanNombre = (inv.nombres || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                return cleanNombre === cleanIdent;
+            });
+        }
 
         if (!invitado) {
             return res.status(404).json({ error: 'Invitación no encontrada' });
         }
 
-        // Validamos el tiempo de modificación
         const ahora = new Date();
         if (ahora > invitado.limiteModificacion) {
             return res.status(403).json({ error: 'El tiempo de confirmación ha expirado' });
@@ -96,7 +114,6 @@ app.put('/api/invitacion/:token', async (req, res) => {
         invitado.estadoAsistencia = estadoAsistencia;
         await invitado.save();
 
-        // Emitimos el cambio en tiempo real al panel de administrador
         io.emit('actualizacionAsistencia', {
             token: invitado.token,
             nuevoEstado: invitado.estadoAsistencia

@@ -1,13 +1,22 @@
-// URL de tu servidor backend local
+// URL de tu servidor backend en Render
 const API_URL = 'https://backend-boda-dghi.onrender.com/api';
 
 console.log("1. El archivo invitacion.js cargó correctamente");
 
-// Extraer el "token" de la URL
+// Extraer el identificador o nombre de la persona invitada desde la URL
+// Soporta formatos: ?Familia-Perez, ?invitado=Familia-Perez, ?para=Familia-Perez, o ?token=0ff42c03
 const parametrosURL = new URLSearchParams(window.location.search);
-const token = parametrosURL.get('token');
+let identificador = parametrosURL.get('invitado') || parametrosURL.get('para') || parametrosURL.get('token');
 
-console.log("2. El token leído de la URL es:", token);
+// Si la URL viene directamente como /invitacion.html?Familia-Perez (sin clave)
+if (!identificador && window.location.search.length > 1) {
+    const rawQuery = window.location.search.substring(1).split('&')[0];
+    if (rawQuery && !rawQuery.includes('=')) {
+        identificador = decodeURIComponent(rawQuery);
+    }
+}
+
+console.log("2. Identificador leído de la URL:", identificador);
 
 // Referencias a los elementos del HTML
 const tituloNombre = document.getElementById('guest-name');
@@ -15,30 +24,63 @@ const btnAsistire = document.getElementById('btn-yes');
 const btnNoAsistire = document.getElementById('btn-no');
 const mensajeEstado = document.getElementById('mensaje-estado');
 
+// Variable global para guardar el token real del invitado en base de datos
+let tokenActivo = null;
+
+// Función para normalizar texto (ignorar tildes, mayúsculas y guiones)
+function normalizarTexto(txt) {
+    if (!txt) return '';
+    return txt
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '');
+}
+
 // Función para cargar los datos del invitado
 async function cargarInvitacion() {
-    if (!token) {
-        console.log("3. Modo vista previa (sin token en la URL).");
+    if (!identificador) {
+        console.log("3. Modo vista previa (sin invitado en la URL).");
         if (tituloNombre) tituloNombre.textContent = "Familia & Amigos";
         return;
     }
 
     try {
-        console.log("3. Consultando a la base de datos...");
-        const respuesta = await fetch(`${API_URL}/invitacion/${token}`);
-        const invitado = await respuesta.json();
+        console.log("3. Consultando información del invitado...");
+        let invitado = null;
 
-        console.log("4. Datos recibidos del servidor:", invitado);
+        // 1. Intento de búsqueda directa por token o slug
+        try {
+            const respuestaDirecta = await fetch(`${API_URL}/invitacion/${encodeURIComponent(identificador)}`);
+            if (respuestaDirecta.ok) {
+                invitado = await respuestaDirecta.json();
+            }
+        } catch (e) {
+            console.log("No encontrado directamente, buscando por nombre...");
+        }
 
-        if (respuesta.ok) {
+        // 2. Si no se encontró directo, buscamos en la lista completa comparando nombres
+        if (!invitado) {
+            const respuestaLista = await fetch(`${API_URL}/invitados`);
+            if (respuestaLista.ok) {
+                const listaInvitados = await respuestaLista.json();
+                const normalizadoBuscado = normalizarTexto(identificador);
+                invitado = listaInvitados.find(inv => {
+                    return inv.token === identificador ||
+                           normalizarTexto(inv.nombres) === normalizadoBuscado;
+                });
+            }
+        }
+
+        console.log("4. Invitado encontrado:", invitado);
+
+        if (invitado) {
+            tokenActivo = invitado.token;
             tituloNombre.textContent = invitado.nombres;
 
             // Validamos si ya pasó el tiempo límite de modificación
             const ahora = new Date();
             const fechaLimite = new Date(invitado.limiteModificacion);
-
-            console.log("Fecha actual:", ahora);
-            console.log("Fecha límite:", fechaLimite);
 
             if (ahora > fechaLimite) {
                 if (mensajeEstado) mensajeEstado.textContent = "El tiempo para confirmar asistencia ha finalizado.";
@@ -55,19 +97,20 @@ async function cargarInvitacion() {
             if (tituloNombre) tituloNombre.textContent = "Invitación no encontrada";
         }
     } catch (error) {
-        console.error("Error de conexión:", error);
+        console.error("Error de conexión al cargar invitación:", error);
     }
 }
 
 // Función para enviar la respuesta de asistencia
 async function enviarRespuesta(estado) {
-    if (!token) {
+    const tokenParaGuardar = tokenActivo || identificador;
+    if (!tokenParaGuardar) {
         if (mensajeEstado) mensajeEstado.textContent = `¡Gracias! Respuesta de prueba registrada: ${estado}`;
         return;
     }
 
     try {
-        const respuesta = await fetch(`${API_URL}/invitacion/${token}`, {
+        const respuesta = await fetch(`${API_URL}/invitacion/${tokenParaGuardar}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ estadoAsistencia: estado })
@@ -79,18 +122,18 @@ async function enviarRespuesta(estado) {
             if (mensajeEstado) mensajeEstado.textContent = `¡Gracias! Has confirmado que: ${estado}`;
             alert("Tu respuesta ha sido guardada.");
         } else {
-            alert(datos.error); 
+            alert(datos.error || "No se pudo registrar la respuesta"); 
         }
     } catch (error) {
         alert("Hubo un error al enviar tu respuesta.");
     }
 }
 
-// Asignar los eventos de clic a los botones (solo si existen en el HTML)
+// Asignar los eventos de clic a los botones
 if (btnAsistire) btnAsistire.addEventListener('click', () => enviarRespuesta('Asistirá'));
 if (btnNoAsistire) btnNoAsistire.addEventListener('click', () => enviarRespuesta('No asistirá'));
 
-// 👇 ESTA ES LA LÍNEA MÁS IMPORTANTE QUE HACE QUE TODO ARRANQUE 👇
+// Iniciar carga del invitado
 cargarInvitacion();
 
 // --- LÓGICA DEL CONTADOR DE TIEMPO ---
