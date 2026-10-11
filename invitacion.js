@@ -169,7 +169,7 @@ if (elementoDias && elementoHoras && elementoMinutos && elementoSegundos) {
 }
 
 // ----------------------------------------------------
-// LÓGICA DE LA MÚSICA DE FONDO (AUTOPLAY)
+// LÓGICA DE LA MÚSICA DE FONDO (COMPATIBLE CON MÓVIL Y DESKTOP)
 // ----------------------------------------------------
 const reproductorMusica = document.getElementById('musica-fondo');
 const btnMusica = document.getElementById('btn-musica');
@@ -177,41 +177,94 @@ const btnMusica = document.getElementById('btn-musica');
 let musicaReproduciendo = false;
 
 if (reproductorMusica) {
-    reproductorMusica.volume = 0.2; // Ajustamos el volumen al 20%
+    try {
+        reproductorMusica.volume = 0.35; // Volumen óptimo
+    } catch (e) {
+        // En iOS Safari el volumen es de solo lectura por hardware
+    }
 }
 
-// Función para encender la música y cambiar el botón
+function actualizarBotonMusica(reproduciendo) {
+    if (!btnMusica) return;
+    if (reproduciendo) {
+        btnMusica.innerHTML = '🔊 Pausar Música';
+        btnMusica.classList.remove('pulse');
+    } else {
+        btnMusica.innerHTML = '🎵 Activar Música';
+        btnMusica.classList.add('pulse');
+    }
+}
+
+// Función para iniciar la música
 function encenderMusica() {
-    if (!musicaReproduciendo && reproductorMusica) {
-        reproductorMusica.play().then(() => {
-            if (btnMusica) btnMusica.textContent = '🔊 Pausar Música';
+    if (!reproductorMusica) return;
+    
+    const playPromise = reproductorMusica.play();
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
             musicaReproduciendo = true;
+            actualizarBotonMusica(true);
+            removerListenersInteraccion();
         }).catch((error) => {
-            console.log("Esperando interacción del usuario para reproducir audio.");
+            // Políticas de autoplay en celulares bloquean el audio hasta el primer toque
+            console.log("Autoplay en espera de interacción táctil:", error.message || error);
+            actualizarBotonMusica(false);
         });
     }
 }
 
-// 1. Intentamos reproducir apenas cargue la página
+function pausarMusica() {
+    if (!reproductorMusica) return;
+    reproductorMusica.pause();
+    musicaReproduciendo = false;
+    actualizarBotonMusica(false);
+}
+
+// Manejador del primer toque/gesto en celular
+function activarMusicaAlInteractuar() {
+    if (!musicaReproduciendo) {
+        encenderMusica();
+    }
+}
+
+const eventosTactiles = ['touchstart', 'touchend', 'click', 'pointerdown'];
+
+function agregarListenersInteraccion() {
+    eventosTactiles.forEach(evento => {
+        window.addEventListener(evento, activarMusicaAlInteractuar, { passive: true });
+        document.addEventListener(evento, activarMusicaAlInteractuar, { passive: true });
+    });
+}
+
+function removerListenersInteraccion() {
+    eventosTactiles.forEach(evento => {
+        window.removeEventListener(evento, activarMusicaAlInteractuar);
+        document.removeEventListener(evento, activarMusicaAlInteractuar);
+    });
+}
+
+// 1. Intentamos reproducción automática directa (funciona en desktop si hay permiso)
 window.addEventListener('load', () => {
     encenderMusica();
 });
 
-// 2. Si el navegador lo bloqueó, lo activamos al primer clic en cualquier parte
-document.body.addEventListener('click', () => {
-    if (!musicaReproduciendo) {
-        encenderMusica();
-    }
-}, { once: true }); // El {once: true} asegura que este evento global solo se ejecute una vez
+// 2. Escuchamos el primer toque/scroll en el celular para desbloquear el audio inmediatamente
+agregarListenersInteraccion();
 
-// 3. El botón sigue funcionando para que el invitado decida pausarla
+// 3. También activar al hacer clic en el botón de bienvenida "Ver invitación →"
+const btnHero = document.querySelector('.btn-hero');
+if (btnHero) {
+    btnHero.addEventListener('click', () => {
+        if (!musicaReproduciendo) encenderMusica();
+    });
+}
+
+// 4. Control manual para pausar/reanudar cuando el invitado lo desee
 if (btnMusica && reproductorMusica) {
     btnMusica.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita que este clic active el evento global de arriba
+        e.stopPropagation();
         if (musicaReproduciendo) {
-            reproductorMusica.pause();
-            btnMusica.textContent = '🔇 Reproducir Música';
-            musicaReproduciendo = false;
+            pausarMusica();
         } else {
             encenderMusica();
         }
