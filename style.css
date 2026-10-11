@@ -1460,6 +1460,9 @@ section, footer {
         margin: 0 auto;
     }
 
+    .gifts-image-col {
+        border-radius: 15px;
+    }
 
     /* Información Adicional Móvil */
     .info-card {
