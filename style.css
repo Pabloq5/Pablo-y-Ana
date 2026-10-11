@@ -604,7 +604,7 @@ section, footer {
 .dresscode-desc {
     font-family: var(--font-body);
     font-size: 0.86rem;
-    color: #6a7065;
+    color: #2c2c2c;
     line-height: 1.45;
     margin-bottom: 12px;
 }
@@ -667,7 +667,7 @@ section, footer {
 .avoid-swatch-name {
     font-family: var(--font-body);
     font-size: 0.72rem;
-    color: #666c60;
+    color: #2c2c2c;
     font-weight: 500;
     text-align: center;
     white-space: nowrap;
@@ -1018,7 +1018,7 @@ section, footer {
 }
 
 .rsvp-card {
-    max-width: 660px;
+    max-width: 800px;
     width: 100%;
     margin: 0 auto;
     padding: 55px 45px 50px 45px;
@@ -1363,6 +1363,114 @@ section, footer {
 /* ==========================================================================
    14. DISEÑO RESPONSIVO (MÓVIL & TABLET)
    ========================================================================== */
+
+/* ==========================================================================
+   14. SECCIÓN DE DUDAS Y CONTACTO (Estilo Boda Romántico y Cálido)
+   ========================================================================== */
+.contact-section {
+    padding-top: 5px;
+    padding-bottom: 75px;
+}
+
+.contact-card {
+    background-color: var(--card-warm-bg);
+    border-radius: 20px;
+    border: 1px solid rgba(132, 147, 119, 0.28);
+    padding: 40px 32px 35px 32px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(68, 78, 65, 0.04);
+}
+
+.contact-icon-bubble {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: rgba(68, 78, 65, 0.08);
+    color: var(--olive-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px auto;
+}
+
+.contact-icon-bubble svg {
+    width: 22px;
+    height: 22px;
+}
+
+.contact-eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    letter-spacing: 4px;
+    color: var(--olive-medium);
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.contact-title {
+    font-family: var(--font-heading);
+    font-size: 1.95rem;
+    color: #272d24;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+.contact-desc {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: #636a5e;
+    line-height: 1.6;
+    margin: 0 auto 22px auto;
+    max-width: 420px;
+}
+
+/* Botón en armonía con el verde olivo de la boda */
+.btn-whatsapp-wedding {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background-color: var(--olive-dark);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(68, 78, 65, 0.22);
+    transition: all 0.25s ease;
+    border: 1.5px solid var(--olive-dark);
+}
+
+.btn-whatsapp-wedding:hover {
+    background-color: var(--olive-dark-hover);
+    border-color: var(--olive-dark-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(68, 78, 65, 0.32);
+    color: #ffffff;
+}
+
+.whatsapp-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.contact-signoff {
+    margin-top: 18px;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: #555e51;
+    letter-spacing: 0.5px;
+    margin-bottom: 0;
+}
+
 @media (max-width: 900px) {
     .dresscode-grid {
         grid-template-columns: 1fr;
@@ -1629,6 +1737,22 @@ section, footer {
         width: 100%;
         justify-content: center;
         padding: 14px 20px !important;
+    }
+
+    
+    /* Contacto Móvil */
+    .contact-card {
+        padding: 32px 20px 28px 20px;
+    }
+
+    .contact-title {
+        font-size: 1.65rem;
+    }
+
+    .btn-whatsapp-wedding {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
     }
 
     /* Agradecimiento Móvil */

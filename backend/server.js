@@ -39,7 +39,7 @@ app.post('/api/invitados', async (req, res) => {
         const token = crypto.randomBytes(4).toString('hex'); 
         
         // Configuramos la fecha límite (ejemplo: 20 de agosto de 2025)
-        const limite = new Date('2026-11-20T23:59:59');
+        const limite = new Date('2026-10-30T23:59:59');
 
         const nuevoInvitado = new Invitado({
             nombres,
@@ -107,8 +107,9 @@ app.put('/api/invitacion/:identificador', async (req, res) => {
         }
 
         const ahora = new Date();
-        if (ahora > invitado.limiteModificacion) {
-            return res.status(403).json({ error: 'El tiempo de confirmación ha expirado' });
+        const limiteOficial = new Date('2026-10-30T23:59:59');
+        if (ahora > limiteOficial) {
+            return res.status(403).json({ error: 'El tiempo de confirmación ha expirado (límite: 30 de octubre de 2026 a las 23:59)' });
         }
 
         invitado.estadoAsistencia = estadoAsistencia;

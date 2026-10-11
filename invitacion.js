@@ -80,10 +80,13 @@ async function cargarInvitacion() {
 
             // Validamos si ya pasó el tiempo límite de modificación
             const ahora = new Date();
-            const fechaLimite = new Date(invitado.limiteModificacion);
+            // Fecha límite oficial: 30 de octubre de 2026 hasta las 23:59
+            const fechaLimite = new Date('2026-10-30T23:59:59');
 
             if (ahora > fechaLimite) {
-                if (mensajeEstado) mensajeEstado.textContent = "El tiempo para confirmar asistencia ha finalizado.";
+                if (mensajeEstado) mensajeEstado.textContent = "El tiempo para confirmar asistencia finalizó el 30 de octubre de 2026 (23:59).";
+                if (btnAsistire) btnAsistire.disabled = true;
+                if (btnNoAsistire) btnNoAsistire.disabled = true;
             } else {
                 // Habilitamos los botones si aún hay tiempo
                 if (btnAsistire) btnAsistire.disabled = false;
@@ -103,6 +106,12 @@ async function cargarInvitacion() {
 
 // Función para enviar la respuesta de asistencia
 async function enviarRespuesta(estado) {
+    const ahora = new Date();
+    const fechaLimite = new Date('2026-10-30T23:59:59');
+    if (ahora > fechaLimite) {
+        alert("El tiempo límite para confirmar o modificar tu asistencia ha finalizado (30/10/2026 a las 23:59).");
+        return;
+    }
     const tokenParaGuardar = tokenActivo || identificador;
     if (!tokenParaGuardar) {
         if (mensajeEstado) mensajeEstado.textContent = `¡Gracias! Respuesta de prueba registrada: ${estado}`;
@@ -137,7 +146,7 @@ if (btnNoAsistire) btnNoAsistire.addEventListener('click', () => enviarRespuesta
 cargarInvitacion();
 
 // --- LÓGICA DEL CONTADOR DE TIEMPO ---
-const fechaBoda = new Date(2026, 11, 18, 15, 0, 0).getTime();
+const fechaBoda = new Date(2026, 11, 18, 14, 30, 0).getTime(); // 18 de Diciembre de 2026 a las 14:30
 const elementoDias = document.getElementById('dias');
 const elementoHoras = document.getElementById('horas');
 const elementoMinutos = document.getElementById('minutos');
