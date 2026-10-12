@@ -145,7 +145,7 @@ if (btnNoAsistire) btnNoAsistire.addEventListener('click', () => enviarRespuesta
 // Iniciar carga del invitado
 cargarInvitacion();
 
-// --- LÓGICA DEL CONTADOR DE TIEMPO ---
+// LÓGICA DEL CONTADOR DE TIEMPO 
 const fechaBoda = new Date(2026, 11, 18, 14, 30, 0).getTime(); // 18 de Diciembre de 2026 a las 14:30
 const elementoDias = document.getElementById('dias');
 const elementoHoras = document.getElementById('horas');
@@ -177,9 +177,7 @@ if (elementoDias && elementoHoras && elementoMinutos && elementoSegundos) {
     }, 1000);
 }
 
-// ----------------------------------------------------
 // LÓGICA DE LA MÚSICA DE FONDO (COMPATIBLE CON MÓVIL Y DESKTOP)
-// ----------------------------------------------------
 const reproductorMusica = document.getElementById('musica-fondo');
 const btnMusica = document.getElementById('btn-musica');
 
@@ -196,10 +194,10 @@ if (reproductorMusica) {
 function actualizarBotonMusica(reproduciendo) {
     if (!btnMusica) return;
     if (reproduciendo) {
-        btnMusica.innerHTML = '🔊 Pausar Música';
+        btnMusica.innerHTML = ' <i class="bi bi-volume-mute-fill"></i> Pausar Música';
         btnMusica.classList.remove('pulse');
     } else {
-        btnMusica.innerHTML = '🎵 Activar Música';
+        btnMusica.innerHTML = ' <i class="bi bi-volume-up-fill"></i> Activar Música';
         btnMusica.classList.add('pulse');
     }
 }
@@ -261,7 +259,7 @@ window.addEventListener('load', () => {
 agregarListenersInteraccion();
 
 // 3. También activar al hacer clic en el botón de bienvenida "Ver invitación →"
-const btnHero = document.querySelector('.btn-hero');
+const btnHero = document.querySelector('.boton-portada');
 if (btnHero) {
     btnHero.addEventListener('click', () => {
         if (!musicaReproduciendo) encenderMusica();

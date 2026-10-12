@@ -1,1773 +1,1788 @@
-/* ==========================================================================
-   1. IMPORTACIÓN DE FUENTES & VARIABLES DE COLOR
-   ========================================================================== */
+/*
+1. IMPORTACIÓN DE FUENTES & VARIABLES DE COLOR
+*/
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Dancing+Script&family=Parisienne&family=Pinyon+Script&display=swap');
 
 :root {
-    --bg-color: #f7f6f0;           /* Fondo beige cálido / hueso */
-    --card-bg: #ffffff;           /* Fondo de tarjetas estándar */
-    --card-warm-bg: #faf8f3;      /* Fondo de tarjetas crema */
-    --text-main: #2e332c;         /* Texto principal grafito suave */
-    --text-muted: #666c61;        /* Texto secundario atenuado */
-    --olive-dark: #444e41;        /* Verde olivo intenso (botones) */
-    --olive-dark-hover: #333c31;  /* Hover verde olivo */
-    --olive-medium: #5b6555;      /* Verde olivo medio */
-    --olive-light: #839274;       /* Verde salvia suave */
-    --sage-thanks: #cbd0c3;       /* Verde salvia claro para agradecimiento */
-    --border-subtle: rgba(0, 0, 0, 0.05);
-    
-    --font-heading: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-cursive: 'Alex Brush', cursive;
+--bg-color: #f7f6f0;           /* Fondo beige cálido / hueso */
+--card-bg: #ffffff;           /* Fondo de tarjetas estándar */
+--card-warm-bg: #faf8f3;      /* Fondo de tarjetas crema */
+--text-main: #2e332c;         /* Texto principal grafito suave */
+--text-muted: #666c61;        /* Texto secundario atenuado */
+--olive-dark: #444e41;        /* Verde olivo intenso (botones) */
+--olive-dark-hover: #333c31;  /* Hover verde olivo */
+--olive-medium: #5b6555;      /* Verde olivo medio */
+--olive-light: #839274;       /* Verde salvia suave */
+--sage-thanks: #cbd0c3;       /* Verde salvia claro para agradecimiento */
+--border-subtle: rgba(0, 0, 0, 0.05);
+
+--font-heading: 'Cormorant Garamond', Georgia, serif;
+--font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+--font-cursive: 'Alex Brush', cursive;
 }
 
-/* ==========================================================================
-   2. ESTILOS GENERALES
-   ========================================================================== */
+/*
+2. ESTILOS GENERALES
+*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-body);
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+font-family: var(--font-body);
+background-color: var(--bg-color);
+color: var(--text-main);
+line-height: 1.6;
+-webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    font-weight: 500;
+font-family: var(--font-heading);
+font-weight: 500;
 }
 
 section, footer {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
+max-width: 1100px;
+margin: 0 auto;
+padding: 30px 20px;
 }
 
 /* Tarjeta estándar */
-.card {
-    background-color: var(--card-bg);
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
+.tarjeta {
+background-color: var(--card-bg);
+border-radius: 18px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+border: 1px solid var(--border-subtle);
+overflow: hidden;
 }
 
-.section-eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #8e8980;
-    font-weight: 500;
-    margin-bottom: 12px;
-    display: block;
+.subtitulo-seccion {
+font-size: 0.78rem;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: #8e8980;
+font-weight: 500;
+margin-bottom: 12px;
+display: block;
 }
 
-/* ==========================================================================
-   3. SECCIÓN PRINCIPAL (HERO)
-   ========================================================================== */
-.hero-section {
-    min-height: 100vh;
-    max-width: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.45) 100%), url('image/beso1.jpg') center/cover;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 60px 40px;
-    overflow: hidden;
+/*
+3. SECCIÓN PRINCIPAL (HERO)
+*/
+.seccion-portada {
+min-height: 100vh;
+max-width: 100%;
+background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.45) 100%), url('image/beso.jpg') center/cover;
+display: flex;
+align-items: center;
+position: relative;
+padding: 60px 40px;
+overflow: hidden;
 }
 
-.hero-content {
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    text-align: left;
+.contenido-portada {
+max-width: 1100px;
+width: 100%;
+margin: 0 auto;
+position: relative;
+z-index: 2;
+text-align: left;
 }
 
-.hero-botanical-left {
-    position: absolute;
-    left: -20px;
-    bottom: -20px;
-    width: 130px;
-    height: 170px;
-    opacity: 0.6;
-    pointer-events: none;
+.botanico-izquierdo-portada {
+position: absolute;
+left: -20px;
+bottom: -20px;
+width: 130px;
+height: 170px;
+opacity: 0.6;
+pointer-events: none;
 }
 
-.hero-eyebrow {
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-    color: rgba(255, 255, 255, 0.85);
-    text-transform: uppercase;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 8px;
+.subtitulo-portada {
+font-size: 0.85rem;
+letter-spacing: 4px;
+color: rgba(255, 255, 255, 0.85);
+text-transform: uppercase;
+font-weight: 500;
+display: block;
+margin-bottom: 8px;
 }
 
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: clamp(3.2rem, 6vw, 4.8rem);
-    color: #ffffff;
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
+.titulo-portada {
+font-family: var(--font-heading);
+font-size: clamp(3.2rem, 6vw, 4.8rem);
+color: #ffffff;
+font-weight: 400;
+line-height: 1.1;
+margin-bottom: 10px;
+letter-spacing: 1px;
 }
 
-.hero-tagline {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-style: italic;
-    font-family: var(--font-heading);
-    margin-bottom: 14px;
+.eslogan-portada {
+font-size: 1.2rem;
+color: rgba(255, 255, 255, 0.9);
+font-style: italic;
+font-family: var(--font-heading);
+margin-bottom: 14px;
 }
 
-.hero-date {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #ffffff;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
+.fecha-portada {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+color: #ffffff;
+font-size: 1rem;
+letter-spacing: 1px;
+margin-bottom: 20px;
 }
 
-.hero-guest-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 30px;
-    padding: 7px 20px;
-    font-size: 0.9rem;
-    color: #ffffff;
-    margin-bottom: 26px;
-    width: fit-content;
+.caja-invitado-portada {
+display: flex;
+align-items: center;
+gap: 8px;
+background: rgba(255, 255, 255, 0.18);
+backdrop-filter: blur(8px);
+border: 1px solid rgba(255, 255, 255, 0.35);
+border-radius: 30px;
+padding: 7px 20px;
+font-size: 0.9rem;
+color: #ffffff;
+margin-bottom: 26px;
+width: fit-content;
 }
 
-.hero-guest-box strong {
-    color: #ffffff;
-    font-weight: 600;
+.caja-invitado-portada strong {
+color: #ffffff;
+font-weight: 600;
 }
 
-.btn-hero {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    color: #ffffff;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: fit-content;
+.boton-portada {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background-color: rgba(255, 255, 255, 0.22);
+backdrop-filter: blur(10px);
+border: 1.5px solid rgba(255, 255, 255, 0.5);
+color: #ffffff;
+padding: 12px 28px;
+border-radius: 50px;
+font-family: var(--font-body);
+font-size: 0.92rem;
+font-weight: 500;
+text-decoration: none;
+transition: all 0.3s ease;
+width: fit-content;
 }
 
-.btn-hero:hover {
-    background-color: #ffffff;
-    color: #333333;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+.boton-portada:hover {
+background-color: #ffffff;
+color: #333333;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.hero-scroll {
-    position: absolute;
-    bottom: -30px;
-    right: 20px;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.85rem;
-    letter-spacing: 2px;
+.desplazamiento-portada {
+position: absolute;
+bottom: -30px;
+right: 20px;
+color: rgba(255, 255, 255, 0.75);
+font-size: 0.85rem;
+letter-spacing: 2px;
 }
 
-/* ==========================================================================
-   4. NUESTRA HISTORIA
-   ========================================================================== */
-.story-card {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 40px;
-    align-items: center;
-    padding: 45px 50px;
-    text-align: left;
-    background: #ffffff;
-    position: relative;
+/*
+4. NUESTRA HISTORIA
+*/
+.tarjeta-historia {
+display: grid;
+grid-template-columns: 1.15fr 0.85fr;
+gap: 40px;
+align-items: center;
+padding: 45px 50px;
+text-align: left;
+background: #ffffff;
+position: relative;
 }
 
-.story-heading {
-    font-family: var(--font-heading);
-    font-size: 2.3rem;
-    color: #2e332c;
-    line-height: 1.2;
-    margin-bottom: 18px;
-    font-weight: 400;
+.titulo-historia {
+font-family: var(--font-heading);
+font-size: 2.3rem;
+color: #2e332c;
+line-height: 1.2;
+margin-bottom: 18px;
+font-weight: 400;
 }
 
-.story-desc {
-    font-size: 0.95rem;
-    color: #646a62;
-    line-height: 1.75;
-    margin-bottom: 25px;
+.descripcion-historia {
+font-size: 0.95rem;
+color: #646a62;
+line-height: 1.75;
+margin-bottom: 25px;
 }
 
-.btn-pill-outline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 26px;
-    border-radius: 50px;
-    border: 1.5px solid #d4d0c5;
-    color: #444a42;
-    text-decoration: none;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 500;
-    transition: all 0.25s ease;
-    background: transparent;
-    cursor: pointer;
-    width: fit-content;
+.boton-pildora-contorno {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 10px 26px;
+border-radius: 50px;
+border: 1.5px solid #d4d0c5;
+color: #444a42;
+text-decoration: none;
+font-family: var(--font-body);
+font-size: 0.88rem;
+font-weight: 500;
+transition: all 0.25s ease;
+background: transparent;
+cursor: pointer;
+width: fit-content;
 }
 
-.btn-pill-outline:hover {
-    background-color: #f7f6f2;
-    border-color: #b8b5aa;
-    transform: translateY(-1px);
+.boton-pildora-contorno:hover {
+background-color: #f7f6f2;
+border-color: #b8b5aa;
+transform: translateY(-1px);
 }
 
-.story-visual-col {
-    position: relative;
-    min-height: 270px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.columna-visual-historia {
+position: relative;
+min-height: 270px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-.polaroids-group {
-    position: relative;
-    width: 280px;
-    height: 250px;
+.grupo-polaroids {
+position: relative;
+width: 280px;
+height: 250px;
 }
 
-.polaroid-item {
-    position: absolute;
-    background: #ffffff;
-    padding: 8px 8px 24px 8px;
-    border-radius: 3px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    width: 165px;
-    height: 195px;
-    transition: transform 0.3s ease;
+.elemento-polaroid {
+position: absolute;
+background: #ffffff;
+padding: 8px 8px 24px 8px;
+border-radius: 3px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+width: 165px;
+height: 195px;
+transition: transform 0.3s ease;
 }
 
-.polaroid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 2px;
-    display: block;
+.elemento-polaroid img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 2px;
+display: block;
 }
 
-.polaroid-top {
-    top: 5px;
-    left: 10px;
-    transform: rotate(-7deg);
-    z-index: 2;
+.polaroid-superior {
+top: 5px;
+left: 10px;
+transform: rotate(-7deg);
+z-index: 2;
 }
 
-.polaroid-top:hover {
-    transform: rotate(-3deg) scale(1.03);
-    z-index: 5;
+.polaroid-superior:hover {
+transform: rotate(-3deg) scale(1.03);
+z-index: 5;
 }
 
-.polaroid-bottom {
-    top: 40px;
-    right: 10px;
-    transform: rotate(7deg);
-    z-index: 3;
+.polaroid-inferior {
+top: 40px;
+right: 10px;
+transform: rotate(7deg);
+z-index: 3;
 }
 
-.polaroid-bottom:hover {
-    transform: rotate(3deg) scale(1.03);
-    z-index: 5;
+.polaroid-inferior:hover {
+transform: rotate(3deg) scale(1.03);
+z-index: 5;
 }
 
-.botanical-branch-story {
-    position: absolute;
-    bottom: -8px;
-    right: -5px;
-    width: 80px;
-    height: 80px;
-    z-index: 4;
-    pointer-events: none;
-    opacity: 0.75;
+.rama-botanica-historia {
+position: absolute;
+bottom: -8px;
+right: -5px;
+width: 80px;
+height: 80px;
+z-index: 4;
+pointer-events: none;
+opacity: 0.75;
 }
 
-/* ==========================================================================
-   5. UBICACIONES (CEREMONIA Y RECEPCIÓN)
-   ========================================================================== */
-.locations-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+/*
+5. UBICACIONES (CEREMONIA Y RECEPCIÓN)
+*/
+.seccion-ubicaciones {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 25px;
 }
 
-.location-card {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    overflow: hidden;
-    text-align: left;
-    background: #ffffff;
-    border-radius: 18px;
+.tarjeta-ubicacion {
+display: flex;
+flex-direction: row;
+padding: 0;
+overflow: hidden;
+text-align: left;
+background: #ffffff;
+border-radius: 18px;
 }
 
-.location-img-wrap {
-    width: 44%;
-    min-width: 160px;
-    position: relative;
-    padding: 12px;
+.envoltorio-imagen-ubicacion {
+width: 44%;
+min-width: 160px;
+position: relative;
+padding: 12px;
 }
 
-.location-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-    min-height: 230px;
+.envoltorio-imagen-ubicacion img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 12px;
+display: block;
+min-height: 230px;
 }
 
-.location-info {
-    width: 56%;
-    padding: 22px 20px 22px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.informacion-ubicacion {
+width: 56%;
+padding: 22px 20px 22px 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
 }
 
-.location-icon {
-    width: 26px;
-    height: 26px;
-    color: #485245;
-    margin-bottom: 6px;
+.icono-ubicacion {
+width: 26px;
+height: 26px;
+color: #485245;
+margin-bottom: 6px;
 }
 
-.location-info h3 {
-    font-family: var(--font-heading);
-    font-size: 1.55rem;
-    color: #2e332c;
-    margin-bottom: 12px;
-    font-weight: 500;
+.informacion-ubicacion h3 {
+font-family: var(--font-heading);
+font-size: 1.55rem;
+color: #2e332c;
+margin-bottom: 12px;
+font-weight: 500;
 }
 
-.location-details {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 16px 0;
+.detalles-ubicacion {
+list-style: none;
+padding: 0;
+margin: 0 0 16px 0;
 }
 
-.location-details li {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-    color: #555c53;
+.detalles-ubicacion li {
+display: flex;
+gap: 8px;
+align-items: flex-start;
+margin-bottom: 8px;
+font-size: 0.85rem;
+color: #555c53;
 }
 
-.detail-icon {
-    font-size: 0.95rem;
-    line-height: 1.3;
+.icono-detalle {
+font-size: 0.95rem;
+line-height: 1.3;
 }
 
-.address-text strong {
-    display: block;
-    font-weight: 600;
-    color: #2e332c;
+.texto-direccion strong {
+display: block;
+font-weight: 600;
+color: #2e332c;
 }
 
-.address-text span {
-    display: block;
-    font-size: 0.78rem;
-    color: #72766f;
+.texto-direccion span {
+display: block;
+font-size: 0.78rem;
+color: #72766f;
 }
 
-.btn-location {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background-color: #485245;
-    color: #ffffff;
-    padding: 9px 18px;
-    border-radius: 50px;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: all 0.25s ease;
-    margin: 0;
+.boton-ubicacion {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background-color: #485245;
+color: #ffffff;
+padding: 9px 18px;
+border-radius: 50px;
+font-family: var(--font-body);
+font-size: 0.82rem;
+font-weight: 500;
+text-decoration: none;
+border: none;
+cursor: pointer;
+align-self: flex-start;
+transition: all 0.25s ease;
+margin: 0;
 }
 
-.btn-location:hover {
-    background-color: #373f34;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(72, 82, 69, 0.25);
+.boton-ubicacion:hover {
+background-color: #373f34;
+transform: translateY(-1px);
+box-shadow: 0 4px 12px rgba(72, 82, 69, 0.25);
 }
 
-.btn-pin-icon {
-    width: 14px;
-    height: 14px;
+.icono-pin-boton {
+width: 14px;
+height: 14px;
 }
 
-/* ==========================================================================
-   6. CUENTA REGRESIVA (FALTAN PARA EL GRAN DÍA)
-   ========================================================================== */
-.countdown-section {
-    padding-top: 15px;
-    padding-bottom: 15px;
+/*
+6. CUENTA REGRESIVA (FALTAN PARA EL GRAN DÍA)
+*/
+.seccion-cuenta-regresiva {
+padding-top: 15px;
+padding-bottom: 15px;
 }
 
-.countdown-card {
-    background: linear-gradient(rgba(246, 243, 237, 0.76), rgba(246, 243, 237, 0.86)), url('image/paisaje.jpg') center/cover;
-    position: relative;
-    width: 100%;
-    border-radius: 18px;
-    padding: 45px 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
-    text-align: center;
+.tarjeta-cuenta-regresiva {
+background: linear-gradient(rgba(151, 149, 144, 0.76), rgba(246, 243, 237, 0.86)), url('image/paisaje.jpg') center/cover;
+position: relative;
+width: 100%;
+border-radius: 18px;
+padding: 45px 30px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+border: 1px solid var(--border-subtle);
+overflow: hidden;
+text-align: center;
 }
 
-.countdown-botanical {
-    position: absolute;
-    left: 15px;
-    bottom: 8px;
-    width: 100px;
-    height: 130px;
-    pointer-events: none;
-    opacity: 0.85;
+.botanico-cuenta-regresiva {
+position: absolute;
+left: 15px;
+bottom: 8px;
+width: 100px;
+height: 130px;
+pointer-events: none;
+opacity: 0.85;
 }
 
-.countdown-inner {
-    position: relative;
-    z-index: 2;
+.interior-cuenta-regresiva {
+position: relative;
+z-index: 2;
 }
 
-.countdown-eyebrow {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    letter-spacing: 4px;
-    color: #4b5247;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 500;
+.subtitulo-cuenta-regresiva {
+display: block;
+font-family: var(--font-heading);
+font-size: 1.15rem;
+letter-spacing: 4px;
+color: #000000;
+margin-bottom: 25px;
+text-transform: uppercase;
+text-align: center;
+font-weight: 500;
 }
 
 #timer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 580px;
-    margin: 0 auto;
+display: flex;
+justify-content: center;
+align-items: center;
+max-width: 580px;
+margin: 0 auto;
 }
 
-.timer-col {
-    flex: 1;
-    text-align: center;
-    padding: 0 15px;
+.columna-temporizador {
+flex: 1;
+text-align: center;
+padding: 0 15px;
 }
 
-.timer-col span {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    color: #272d24;
-    line-height: 1;
-    font-weight: 400;
+.columna-temporizador span {
+display: block;
+font-family: var(--font-heading);
+font-size: 3rem;
+color: #0a0a0a;
+line-height: 1;
+font-weight: 400;
 }
 
-.timer-col p {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    color: #6a6f66;
-    margin-top: 6px;
+.columna-temporizador p {
+font-family: var(--font-heading);
+font-size: 0.95rem;
+color: #000000;
+margin-top: 6px;
 }
 
-.timer-divider {
-    width: 1px;
-    height: 48px;
-    background-color: rgba(70, 80, 68, 0.25);
+.divisor-temporizador {
+width: 1px;
+height: 48px;
+background-color: rgba(70, 80, 68, 0.25);
 }
 
-/* ==========================================================================
-   7. CÓDIGO DE VESTIMENTA (Diseño fiel a imagen de referencia)
-   ========================================================================== */
-.dresscode-card {
-    background-color: #ffffff; /* Mismo color del fondo de la sección (#f7f6f0) */
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    position: relative;
-    overflow: hidden;
-    padding: 35px 45px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+/* 
+CÓDIGO DE VESTIMENTA (Diseño fiel a imagen de referencia)
+*/
+.tarjeta-vestimenta {
+background-color: #ffffff;
+border-radius: 18px;
+border: 1px solid rgba(0, 0, 0, 0.05);
+position: relative;
+overflow: hidden;
+padding: 35px 45px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-.dresscode-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 0.85fr auto 0.9fr;
-    align-items: center;
-    gap: 25px;
-    position: relative;
-    z-index: 2;
+.cuadricula-vestimenta {
+display: grid;
+grid-template-columns: 1.25fr 0.85fr auto 0.9fr;
+align-items: center;
+gap: 25px;
+position: relative;
+z-index: 2;
 }
 
 /* Columna Izquierda: Información posicionada más arriba */
-.dresscode-left {
-    text-align: left;
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
-    padding-top: 5px;
+.columna-izquierda-vestimenta {
+text-align: left;
+align-self: flex-start;
+display: flex;
+flex-direction: column;
+padding-top: 5px;
 }
 
-.dresscode-header-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 4px;
+.fila-encabezado-vestimenta {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 4px;
 }
 
-.dresscode-hanger-wrap {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+.envoltorio-percha-vestimenta {
+width: 36px;
+height: 36px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
 }
 
-.hanger-icon {
-    width: 34px;
-    height: 34px;
-    color: #272d24;
+.icono-percha {
+width: 34px;
+height: 34px;
+color: #272d24;
 }
 
-.dresscode-v-sep {
-    width: 1px;
-    height: 34px;
-    background-color: #ccc7bc;
-    flex-shrink: 0;
+.separador-vertical-vestimenta {
+width: 1px;
+height: 34px;
+background-color: #ccc7bc;
+flex-shrink: 0;
 }
 
-.dresscode-title {
-    font-family: var(--font-heading);
-    font-size: 1.85rem;
-    color: #272d24;
-    font-weight: 500;
-    line-height: 1.2;
+.titulo-vestimenta {
+font-family: var(--font-heading);
+font-size: 1.85rem;
+color: #272d24;
+font-weight: 500;
+line-height: 1.2;
 }
 
-.dresscode-subtitle {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.45rem;
-    color: #444c3f;
-    margin-bottom: 4px;
-    font-weight: 500;
+.subtitulo-vestimenta {
+font-family: var(--font-heading);
+font-style: italic;
+font-size: 1.45rem;
+color: #444c3f;
+margin-bottom: 4px;
+font-weight: 500;
 }
 
-.dresscode-desc {
-    font-family: var(--font-body);
-    font-size: 0.86rem;
-    color: #2c2c2c;
-    line-height: 1.45;
-    margin-bottom: 12px;
+.descripcion-vestimenta {
+font-family: var(--font-body);
+font-size: 0.86rem;
+color: #2c2c2c;
+line-height: 1.45;
+margin-bottom: 12px;
 }
 
-.dresscode-swatches {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
+.muestras-colores-vestimenta {
+display: flex;
+gap: 8px;
+align-items: center;
+flex-wrap: wrap;
+margin-bottom: 14px;
 }
 
-.swatch {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    border: 2px solid #ffffff;
-    transition: transform 0.2s ease;
-    cursor: pointer;
-    flex-shrink: 0;
+.muestra-color {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+border: 2px solid #ffffff;
+transition: transform 0.2s ease;
+cursor: pointer;
+flex-shrink: 0;
 }
 
-.swatch:hover {
-    transform: scale(1.15);
+.muestra-color:hover {
+transform: scale(1.15);
 }
 
 /* Bloque de colores a evitar */
-.dresscode-avoid-block {
-    margin-top: 2px;
-    padding-top: 12px;
-    border-top: 1px dashed rgba(70, 80, 68, 0.18);
+.bloque-colores-evitar {
+margin-top: 2px;
+padding-top: 12px;
+border-top: 1px dashed rgba(70, 80, 68, 0.18);
 }
 
-.dresscode-avoid-text {
-    font-family: var(--font-body);
-    font-size: 0.84rem;
-    color: #555d50;
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 10px;
+.texto-colores-evitar {
+font-family: var(--font-body);
+font-size: 0.84rem;
+color: #555d50;
+font-weight: 500;
+line-height: 1.4;
+margin-bottom: 10px;
 }
 
-.dresscode-swatches-avoid {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
+.muestras-colores-evitar {
+display: flex;
+gap: 12px;
+align-items: flex-start;
+flex-wrap: wrap;
+margin-bottom: 8px;
 }
 
-.avoid-swatch-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    cursor: default;
+.elemento-muestra-evitar {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+cursor: default;
 }
 
-.avoid-swatch-name {
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    color: #2c2c2c;
-    font-weight: 500;
-    text-align: center;
-    white-space: nowrap;
+.nombre-muestra-evitar {
+font-family: var(--font-body);
+font-size: 0.72rem;
+color: #2c2c2c;
+font-weight: 500;
+text-align: center;
+white-space: nowrap;
 }
 
-.avoid-swatch-footnote {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.73rem;
-    color: #7a8075;
-    font-style: italic;
-    line-height: 1.3;
-    margin-top: 20px;
+.nota-muestra-evitar {
+display: block;
+font-family: var(--font-body);
+font-size: 0.73rem;
+color: #7a8075;
+font-style: italic;
+line-height: 1.3;
+margin-top: 20px;
 }
 
 
 /* Columna Central: Pareja Ilustrada sin marco rectangular */
-.dresscode-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.columna-centro-vestimenta {
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
-.dresscode-couple-img {
-    max-height: 330px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
-    display: block;
-    background: transparent;
+.imagen-pareja-vestimenta {
+max-height: 330px;
+width: auto;
+object-fit: contain;
+filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.05));
+display: block;
+background: transparent;
 }
 
 /* Divisor Vertical */
-.dresscode-divider-line {
-    width: 1px;
-    height: 220px;
-    background-color: #d6d1c4;
+.linea-divisora-vestimenta {
+width: 1px;
+height: 220px;
+background-color: #d6d1c4;
 }
 
 /* Columna Derecha: Evita */
-.dresscode-right {
-    text-align: left;
+.columna-derecha-vestimenta {
+text-align: left;
 }
 
-.avoid-heading {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.55rem;
-    color: #333b2e;
-    margin-bottom: 16px;
-    font-weight: 500;
+.titulo-evitar {
+font-family: var(--font-heading);
+font-style: italic;
+font-size: 1.55rem;
+color: #333b2e;
+margin-bottom: 16px;
+font-weight: 500;
 }
 
-.avoid-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.lista-evitar {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 15px;
 }
 
-.avoid-list li {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 0.9rem;
-    color: #555d50;
+.lista-evitar li {
+display: flex;
+align-items: center;
+gap: 14px;
+font-size: 0.9rem;
+color: #555d50;
 }
 
-.avoid-icon-box {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #2e3529;
-    flex-shrink: 0;
+.caja-icono-evitar {
+width: 28px;
+height: 28px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #2e3529;
+flex-shrink: 0;
 }
 
-.avoid-icon-box svg {
-    width: 24px;
-    height: 24px;
+.caja-datos-bancarios {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: fit-content;
+max-width: 100%;
+margin: 0 auto;
+padding: 0;
+gap: 15px;
 }
 
-/* ==========================================================================
-   8. UN MENSAJE PARA TI
-   ========================================================================== */
-.message-card {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 40px;
-    align-items: center;
-    padding: 40px 45px;
-    text-align: left;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+.caja-datos-bancarios p {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 4px;
+width: 100%;
+text-align: left;
 }
 
-.message-icon {
-    width: 28px;
-    height: 28px;
-    color: #485245;
-    margin-bottom: 8px;
+.caja-icono-evitar svg {
+width: 24px;
+height: 24px;
 }
 
-.message-text-col h3 {
-    font-family: var(--font-heading);
-    font-size: 1.85rem;
-    color: #272d24;
-    margin-bottom: 14px;
-    font-weight: 500;
+/*
+UN MENSAJE PARA TI
+*/
+.tarjeta-mensaje {
+display: grid;
+grid-template-columns: 1.3fr 1fr;
+gap: 40px;
+align-items: center;
+padding: 40px 45px;
+text-align: left;
+background: #ffffff;
+border-radius: 18px;
+border: 1px solid var(--border-subtle);
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-.message-body {
-    font-size: 0.95rem;
-    color: #646a62;
-    line-height: 1.8;
-    margin-bottom: 20px;
+.icono-mensaje {
+width: 28px;
+height: 28px;
+color: #485245;
+margin-bottom: 8px;
 }
 
-.message-signature-wrap {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
+.columna-texto-mensaje h3 {
+font-family: var(--font-heading);
+font-size: 1.85rem;
+color: #272d24;
+margin-bottom: 14px;
+font-weight: 500;
 }
 
-.message-signature {
-    font-family: var(--font-cursive);
-    font-size: 2.8rem;
-    color: #272d24;
-    line-height: 1;
+.cuerpo-mensaje {
+font-size: 0.95rem;
+color: #646a62;
+line-height: 1.8;
+margin-bottom: 20px;
 }
 
-.signature-heart {
-    font-size: 1.2rem;
-    color: #485245;
+.envoltorio-firma-mensaje {
+display: flex;
+align-items: baseline;
+gap: 12px;
 }
 
-.message-photo-col {
-    display: flex;
-    justify-content: center;
-    height: 230px;
-    overflow: hidden;
-    border-radius: 14px;
+.firma-mensaje {
+font-family: var(--font-cursive);
+font-size: 2.8rem;
+color: #272d24;
+line-height: 1;
 }
 
-.message-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 14px;
-    display: block;
+.corazon-firma {
+font-size: 1.2rem;
+color: #485245;
 }
 
-/* ==========================================================================
-   9. MESA DE REGALOS (Diseño fiel a imagen de referencia)
-   ========================================================================== */
-.gifts-card {
-    background-color: #ffffff;
-    border-radius: 18px;
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
-    padding: 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+.columna-foto-mensaje {
+display: flex;
+justify-content: center;
+height: 230px;
+overflow: hidden;
+border-radius: 14px;
 }
 
-.gifts-split-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: center;
+.foto-mensaje {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 14px;
+display: block;
 }
 
-.gifts-text-col {
-    padding: 40px 45px;
-    text-align: left;
+/*
+MESA DE REGALOS (Diseño fiel a imagen de referencia)
+*/
+.tarjeta-regalos {
+background-color: #ffffff;
+border-radius: 18px;
+border: 1px solid var(--border-subtle);
+overflow: hidden;
+padding: 0;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-.gifts-icon-box {
-    width: 32px;
-    height: 32px;
-    color: #2c3328;
-    margin-bottom: 10px;
+.distribucion-dividida-regalos {
+display: grid;
+grid-template-columns: 1.2fr 0.8fr;
+align-items: center;
 }
 
-.gifts-icon-box svg {
-    width: 30px;
-    height: 30px;
+.columna-texto-regalos {
+padding: 40px 45px;
+text-align: left;
 }
 
-.gifts-heading {
-    font-family: var(--font-heading);
-    font-size: 1.85rem;
-    color: #262c23;
-    margin-bottom: 10px;
-    font-weight: 500;
+.caja-icono-regalos {
+width: 32px;
+height: 32px;
+color: #2c3328;
+margin-bottom: 10px;
 }
 
-.gifts-desc {
-    font-size: 0.94rem;
-    color: #646a60;
-    line-height: 1.6;
-    margin-bottom: 22px;
-    max-width: 380px;
+.caja-icono-regalos svg {
+width: 30px;
+height: 30px;
 }
 
-.btn-gift-toggle {
-    margin: 0;
-    font-size: 0.88rem;
-    padding: 10px 24px;
+.titulo-regalos {
+font-family: var(--font-heading);
+font-size: 1.85rem;
+color: #262c23;
+margin-bottom: 10px;
+font-weight: 500;
+}
+
+.descripcion-regalos {
+font-size: 0.94rem;
+color: #646a60;
+line-height: 1.6;
+margin-bottom: 22px;
+max-width: 380px;
+}
+
+.boton-alternar-regalos {
+margin: 0;
+font-size: 0.88rem;
+padding: 10px 24px;
 }
 
 
 
-.gift-bank-box {
-    background-color: #faf9f5;
-    padding: 18px 20px;
-    border-radius: 10px;
-    border-left: 3px solid var(--olive-dark);
+.caja-datos-bancarios {
+background-color: #faf9f5;
+padding: 18px 20px;
+border-radius: 10px;
+border-left: 3px solid var(--olive-dark);
 }
 
-.gift-bank-box h4 {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    color: var(--olive-dark);
-    margin-bottom: 6px;
+.caja-datos-bancarios h4 {
+font-family: var(--font-heading);
+font-size: 1.2rem;
+color: var(--olive-dark);
+margin-bottom: 6px;
 }
 
-.gift-bank-box p {
-    font-size: 0.86rem;
-    color: #666c61;
-    margin-bottom: 10px;
+.caja-datos-bancarios p {
+font-size: 0.86rem;
+color: #666c61;
+margin-bottom: 10px;
 }
 
-.bank-info-grid p {
-    font-size: 0.88rem;
-    color: var(--text-main);
-    margin-bottom: 4px;
+.cuadricula-informacion-bancaria p {
+font-size: 0.88rem;
+color: var(--text-main);
+margin-bottom: 4px;
 }
 
-.gifts-image-col {
-    height: 100%;
-    min-height: 250px;
-    overflow: hidden;
-    background-color: #fbf9f6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.columna-imagen-regalos {
+height: 100%;
+min-height: 250px;
+overflow: hidden;
+background-color: #fbf9f6;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-.gifts-box-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.imagen-caja-regalos {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
 }
 
-/* ==========================================================================
-   10. INFORMACIÓN ADICIONAL (Diseño organizado en 3 columnas)
-   ========================================================================== */
-.info-card {
-    background-color: #ffffff;
-    border-radius: 18px;
-    border: 1px solid var(--border-subtle);
-    padding: 45px 40px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+/*
+INFORMACIÓN ADICIONAL (Diseño organizado en 3 columnas)
+*/
+.tarjeta-informacion {
+background-color: #ffffff;
+border-radius: 18px;
+border: 1px solid var(--border-subtle);
+padding: 45px 40px;
+text-align: center;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-.info-title {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    color: #272d24;
-    font-weight: 500;
-    margin-bottom: 30px;
-    text-align: center;
+.titulo-informacion {
+font-family: var(--font-heading);
+font-size: 2.2rem;
+color: #272d24;
+font-weight: 500;
+margin-bottom: 30px;
+text-align: center;
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    text-align: center;
+.cuadricula-informacion {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 24px;
+text-align: center;
 }
 
-.info-item {
-    background-color: #faf9f5;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 14px;
-    padding: 32px 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.25s ease;
+.elemento-informacion {
+background-color: #faf9f5;
+border: 1px solid rgba(0, 0, 0, 0.05);
+border-radius: 14px;
+padding: 32px 22px;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+transition: all 0.25s ease;
 }
 
-.info-item:hover {
-    background-color: #ffffff;
-    border-color: #d6d2c6;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+.elemento-informacion:hover {
+background-color: #ffffff;
+border-color: #d6d2c6;
+transform: translateY(-3px);
+box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
 }
 
-.info-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: rgba(68, 78, 65, 0.09);
-    color: var(--olive-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    flex-shrink: 0;
+.icono-informacion {
+width: 48px;
+height: 48px;
+border-radius: 50%;
+background-color: rgba(68, 78, 65, 0.09);
+color: var(--olive-dark);
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 16px;
+flex-shrink: 0;
 }
 
-.info-icon svg {
-    width: 24px;
-    height: 24px;
+.icono-informacion svg {
+width: 24px;
+height: 24px;
 }
 
-.info-item h4 {
-    font-family: var(--font-heading);
-    font-size: 1.45rem;
-    color: var(--olive-dark);
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1.25;
+.elemento-informacion h4 {
+font-family: var(--font-heading);
+font-size: 1.45rem;
+color: var(--olive-dark);
+font-weight: 600;
+margin-bottom: 10px;
+line-height: 1.25;
 }
 
-.info-item p {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: #63695e;
-    line-height: 1.65;
-    margin: 0;
+.elemento-informacion p {
+font-family: var(--font-body);
+font-size: 0.9rem;
+color: #63695e;
+line-height: 1.65;
+margin: 0;
 }
 
-/* ==========================================================================
-   11. CONFIRMACIÓN DE ASISTENCIA (RSVP - Diseño Destacado y Llamativo)
-   ========================================================================== */
-.interaction-section {
-    padding-top: 35px;
-    padding-bottom: 35px;
+/*
+CONFIRMACIÓN DE ASISTENCIA (RSVP - Diseño Destacado y Llamativo)
+*/
+.seccion-confirmacion {
+padding-top: 35px;
+padding-bottom: 35px;
 }
 
-.rsvp-card {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 55px 45px 50px 45px;
-    text-align: center;
-    background: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
-    border-radius: 22px;
-    box-shadow: 0 14px 40px rgba(68, 78, 65, 0.09), 0 2px 8px rgba(0, 0, 0, 0.02);
-    border: 1.5px solid rgba(132, 147, 119, 0.35);
-    position: relative;
-    overflow: hidden;
+.tarjeta-confirmacion {
+max-width: 800px;
+width: 100%;
+margin: 0 auto;
+padding: 55px 45px 50px 45px;
+text-align: center;
+background: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
+border-radius: 22px;
+box-shadow: 0 14px 40px rgba(68, 78, 65, 0.09), 0 2px 8px rgba(0, 0, 0, 0.02);
+border: 1.5px solid rgba(132, 147, 119, 0.35);
+position: relative;
+overflow: hidden;
 }
 
 /* Ramas decorativas botánicas en esquinas */
-.rsvp-botanical-tl {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 90px;
-    height: 110px;
-    opacity: 0.35;
-    pointer-events: none;
+.botanico-superior-izquierdo-confirmacion {
+position: absolute;
+top: 0;
+left: 0;
+width: 90px;
+height: 110px;
+opacity: 0.35;
+pointer-events: none;
 }
 
-.rsvp-botanical-br {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 90px;
-    height: 110px;
-    opacity: 0.35;
-    pointer-events: none;
+.botanico-inferior-derecho-confirmacion {
+position: absolute;
+bottom: 0;
+right: 0;
+width: 90px;
+height: 110px;
+opacity: 0.35;
+pointer-events: none;
 }
 
-.rsvp-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.contenido-confirmacion {
+position: relative;
+z-index: 2;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
-/* Badge R.S.V.P. superior */
-.rsvp-badge {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 5px;
-    color: var(--olive-dark);
-    background-color: rgba(68, 78, 65, 0.09);
-    padding: 6px 18px;
-    border-radius: 50px;
-    margin-bottom: 18px;
-    text-transform: uppercase;
+.insignia-confirmacion {
+display: inline-block;
+font-family: var(--font-body);
+font-size: 0.8rem;
+font-weight: 600;
+letter-spacing: 5px;
+color: var(--olive-dark);
+background-color: rgba(68, 78, 65, 0.09);
+padding: 6px 18px;
+border-radius: 50px;
+margin-bottom: 18px;
+text-transform: uppercase;
 }
 
-/* Emblema con icono */
-.rsvp-icon-wrapper {
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #eef1ea 0%, #e2e8db 100%);
-    border: 1.5px solid rgba(132, 147, 119, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--olive-dark);
-    margin-bottom: 18px;
-    box-shadow: 0 4px 14px rgba(68, 78, 65, 0.1);
+.envoltorio-icono-confirmacion {
+width: 62px;
+height: 62px;
+border-radius: 50%;
+background: linear-gradient(135deg, #eef1ea 0%, #e2e8db 100%);
+border: 1.5px solid rgba(132, 147, 119, 0.45);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--olive-dark);
+margin-bottom: 18px;
+box-shadow: 0 4px 14px rgba(68, 78, 65, 0.1);
 }
 
-.rsvp-icon {
-    width: 30px;
-    height: 30px;
+.icono-confirmacion {
+width: 30px;
+height: 30px;
 }
 
-.rsvp-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.1rem, 4vw, 2.6rem);
-    font-weight: 500;
-    color: #242b21;
-    margin-bottom: 12px;
-    line-height: 1.2;
+.titulo-confirmacion {
+font-family: var(--font-heading);
+font-size: clamp(2.1rem, 4vw, 2.6rem);
+font-weight: 500;
+color: #242b21;
+margin-bottom: 12px;
+line-height: 1.2;
 }
 
-.rsvp-subtitle {
-    font-family: var(--font-body);
-    font-size: 0.98rem;
-    color: #5d6459;
-    margin: 0 auto 20px auto;
-    line-height: 1.6;
-    max-width: 520px;
+.subtitulo-confirmacion {
+font-family: var(--font-body);
+font-size: 0.98rem;
+color: #5d6459;
+margin: 0 auto 20px auto;
+line-height: 1.6;
+max-width: 520px;
 }
 
-/* Chip llamativo de aviso de confirmación indispensable */
-.rsvp-notice-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #f3efe6;
-    border: 1px solid #ddd6c8;
-    color: #4a5446;
-    font-size: 0.86rem;
-    font-weight: 500;
-    padding: 7px 20px;
-    border-radius: 30px;
-    margin-bottom: 28px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+.aviso-confirmacion {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background-color: #f3efe6;
+border: 1px solid #ddd6c8;
+color: #4a5446;
+font-size: 0.86rem;
+font-weight: 500;
+padding: 7px 20px;
+border-radius: 30px;
+margin-bottom: 28px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 
-.rsvp-chip-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--olive-dark);
+.icono-aviso-confirmacion {
+width: 16px;
+height: 16px;
+color: var(--olive-dark);
 }
 
-.rsvp-buttons {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
+.botones-confirmacion {
+display: flex;
+gap: 18px;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+width: 100%;
 }
 
 /* Botón SÍ, ASISTIRÉ */
-#btn-yes.btn-confirm,
-.btn-confirm {
-    background: linear-gradient(135deg, #444e41 0%, #353e32 100%) !important;
-    color: #ffffff !important;
-    border: 1.5px solid #444e41 !important;
-    border-radius: 50px !important;
-    padding: 14px 34px !important;
-    font-family: var(--font-body);
-    font-size: 0.98rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 6px 18px rgba(53, 62, 50, 0.28);
+#btn-yes.boton-confirmar,
+.boton-confirmar {
+background: linear-gradient(135deg, #444e41 0%, #353e32 100%) !important;
+color: #ffffff !important;
+border: 1.5px solid #444e41 !important;
+border-radius: 50px !important;
+padding: 14px 34px !important;
+font-family: var(--font-body);
+font-size: 0.98rem !important;
+font-weight: 600 !important;
+letter-spacing: 0.4px;
+display: inline-flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 6px 18px rgba(53, 62, 50, 0.28);
 }
 
-#btn-yes.btn-confirm:hover:not(:disabled) {
-    background: linear-gradient(135deg, #333c30 0%, #262e24 100%) !important;
-    border-color: #262e24 !important;
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(53, 62, 50, 0.38);
+#btn-yes.boton-confirmar:hover:not(:disabled) {
+background: linear-gradient(135deg, #333c30 0%, #262e24 100%) !important;
+border-color: #262e24 !important;
+transform: translateY(-2px) scale(1.02);
+box-shadow: 0 8px 24px rgba(53, 62, 50, 0.38);
 }
 
 /* Botón NO PODRÉ ASISTIR */
-#btn-no.btn-decline,
-.btn-decline {
-    background-color: #ffffff !important;
-    color: #555c50 !important;
-    border: 1.5px solid #cbc6b9 !important;
-    border-radius: 50px !important;
-    padding: 14px 30px !important;
-    font-family: var(--font-body);
-    font-size: 0.95rem !important;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+#btn-no.boton-declinar,
+.boton-declinar {
+background-color: #ffffff !important;
+color: #555c50 !important;
+border: 1.5px solid #cbc6b9 !important;
+border-radius: 50px !important;
+padding: 14px 30px !important;
+font-family: var(--font-body);
+font-size: 0.95rem !important;
+font-weight: 500;
+display: inline-flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+transition: all 0.25s ease;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-#btn-no.btn-decline:hover:not(:disabled) {
-    background-color: #f7f6f1 !important;
-    border-color: #aba597 !important;
-    color: #2b3327 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.07);
+#btn-no.boton-declinar:hover:not(:disabled) {
+background-color: #f7f6f1 !important;
+border-color: #aba597 !important;
+color: #2b3327 !important;
+transform: translateY(-2px);
+box-shadow: 0 5px 14px rgba(0, 0, 0, 0.07);
 }
 
 #btn-yes:disabled,
 #btn-no:disabled {
-    opacity: 0.85;
-    cursor: pointer;
-    box-shadow: none;
+opacity: 0.85;
+cursor: pointer;
+box-shadow: none;
 }
 
-.btn-rsvp-icon {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
+.icono-boton-rsvp {
+width: 18px;
+height: 18px;
+flex-shrink: 0;
 }
 
 #mensaje-estado {
-    margin-top: 20px;
-    font-size: 0.94rem;
-    color: var(--olive-dark);
-    font-weight: 500;
-    transition: all 0.3s ease;
+margin-top: 20px;
+font-size: 0.94rem;
+color: var(--olive-dark);
+font-weight: 500;
+transition: all 0.3s ease;
 }
 
 #mensaje-estado:not(:empty) {
-    display: inline-block;
-    padding: 10px 24px;
-    background-color: rgba(68, 78, 65, 0.09);
-    border: 1px solid rgba(68, 78, 65, 0.2);
-    border-radius: 30px;
+display: inline-block;
+padding: 10px 24px;
+background-color: rgba(68, 78, 65, 0.09);
+border: 1px solid rgba(68, 78, 65, 0.2);
+border-radius: 30px;
 }
 
-/* ==========================================================================
-   12. AGRADECIMIENTO (Diseño fiel a imagen de referencia)
-   ========================================================================== */
-.thank-you-section {
-    padding-top: 20px;
-    padding-bottom: 90px;
+/*
+AGRADECIMIENTO
+*/
+.seccion-agradecimiento {
+padding-top: 25px;
+padding-bottom: 60px;
 }
 
-.thank-you-card {
-    background-color: var(--sage-thanks);
-    border-radius: 18px;
-    border: 1px solid rgba(103, 120, 100, 0.15);
-    padding: 60px 40px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+.tarjeta-agradecimiento {
+background-color: var(--sage-thanks);
+border-radius: 18px;
+border: 1px solid rgba(103, 120, 100, 0.15);
+padding: 60px 40px;
+position: relative;
+overflow: hidden;
+text-align: center;
 }
 
-.thanks-branch-left {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 150px;
-    pointer-events: none;
-    opacity: 0.85;
+.rama-izquierda-agradecimiento {
+position: absolute;
+top: 50%;
+left: 20px;
+transform: translateY(-50%);
+width: 80px;
+height: 150px;
+pointer-events: none;
+opacity: 0.85;
 }
 
-.thanks-branch-right {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 150px;
-    pointer-events: none;
-    opacity: 0.85;
+.rama-derecha-agradecimiento {
+position: absolute;
+top: 50%;
+right: 20px;
+transform: translateY(-50%);
+width: 80px;
+height: 150px;
+pointer-events: none;
+opacity: 0.85;
 }
 
-.thank-you-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-    margin: 0 auto;
-    
+.interior-agradecimiento {
+position: relative;
+z-index: 2;
+max-width: 600px;
+margin: 0 auto;
+
 }
 
-.thank-you-eyebrow {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 25px;
-    letter-spacing: 6px;
-    color: #555d50;
-    margin-bottom: 14px;
-    font-weight: 500;
+.subtitulo-agradecimiento {
+display: block;
+font-family: var(--font-body);
+font-size: 25px;
+letter-spacing: 6px;
+color: #333333;
+margin-bottom: 14px;
+font-weight: 500;
 }
 
-.thank-you-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.85rem, 4vw, 2.5rem);
-    color: #272f23;
-    font-weight: 400;
-    line-height: 1.25;
-    margin: 0 auto 24px auto;
+.titulo-agradecimiento {
+font-family: var(--font-heading);
+font-size: clamp(1.85rem, 4vw, 2.5rem);
+color: #272f23;
+font-weight: 400;
+line-height: 1.25;
+margin: 0 auto 24px auto;
 }
 
-.thank-you-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
+.divisor-agradecimiento {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
 }
 
-.thanks-line {
-    width: 60px;
-    height: 1px;
-    background-color: #838d7c;
+.linea-agradecimiento {
+width: 60px;
+height: 1px;
+background-color: #838d7c;
 }
 
-.thanks-heart {
-    font-size: 1.2rem;
-    color: #454d3f;
-    line-height: 1;
+.corazon-agradecimiento {
+font-size: 1.2rem;
+color: #454d3f;
+line-height: 1;
 }
 
-/* ==========================================================================
-   13. BOTÓN FLOTANTE DE MÚSICA
-   ========================================================================== */
-.floating-music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--olive-dark);
-    color: white;
-    border: none;
-    padding: 22px 36px;
-    border-radius: 26px;
-    font-family: var(--font-body);
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
-    z-index: 1000;
-    transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+/*
+BOTÓN DE MÚSICA
+*/
+.boton-musica-flotante {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background-color: var(--olive-dark);
+color: white;
+border: none;
+padding: 22px 36px;
+border-radius: 26px;
+font-family: var(--font-body);
+font-size: 16px;
+cursor: pointer;
+box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+z-index: 1000;
+transition: all 0.25s ease;
+display: flex;
+align-items: center;
+gap: 8px;
 }
 
-.floating-music-btn:hover {
-    background-color: var(--olive-dark-hover);
-    transform: scale(1.04);
+.boton-musica-flotante:hover {
+background-color: var(--olive-dark-hover);
+transform: scale(1.04);
 }
-.floating-music-btn.pulse {
-    animation: musicPulse 2.2s infinite ease-in-out;
+.boton-musica-flotante.pulse {
+animation: musicPulse 2.2s infinite ease-in-out;
 }
 
 @keyframes musicPulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
-    }
-    50% {
-        transform: scale(1.04);
-        box-shadow: 0 6px 20px rgba(68, 78, 65, 0.45);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
-    }
+0% {
+transform: scale(1);
+box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+50% {
+transform: scale(1.04);
+box-shadow: 0 6px 20px rgba(68, 78, 65, 0.45);
+}
+100% {
+transform: scale(1);
+box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
 }
 
-
-/* ==========================================================================
-   14. DISEÑO RESPONSIVO (MÓVIL & TABLET)
-   ========================================================================== */
-
-/* ==========================================================================
-   14. SECCIÓN DE DUDAS Y CONTACTO (Estilo Boda Romántico y Cálido)
-   ========================================================================== */
-.contact-section {
-    padding-top: 5px;
-    padding-bottom: 75px;
+/*
+SECCIÓN DE DUDAS Y CONTACTO 
+*/
+.seccion-contacto {
+padding-top: 5px;
+padding-bottom: 75px;
 }
 
-.contact-card {
-    background-color: var(--card-warm-bg);
-    border-radius: 20px;
-    border: 1px solid rgba(132, 147, 119, 0.28);
-    padding: 40px 32px 35px 32px;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(68, 78, 65, 0.04);
+.tarjeta-contacto {
+background-color: var(--card-warm-bg);
+border-radius: 20px;
+border: 1px solid rgba(132, 147, 119, 0.28);
+padding: 40px 32px 35px 32px;
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+box-shadow: 0 4px 20px rgba(68, 78, 65, 0.04);
 }
 
-.contact-icon-bubble {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background-color: rgba(68, 78, 65, 0.08);
-    color: var(--olive-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px auto;
+.burbuja-icono-contacto {
+width: 46px;
+height: 46px;
+border-radius: 50%;
+background-color: rgba(68, 78, 65, 0.08);
+color: var(--olive-dark);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 14px auto;
 }
 
-.contact-icon-bubble svg {
-    width: 22px;
-    height: 22px;
+.burbuja-icono-contacto svg {
+width: 22px;
+height: 22px;
 }
 
-.contact-eyebrow {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    letter-spacing: 4px;
-    color: var(--olive-medium);
-    margin-bottom: 6px;
-    font-weight: 600;
-    text-transform: uppercase;
+.subtitulo-contacto {
+display: block;
+font-family: var(--font-body);
+font-size: 0.78rem;
+letter-spacing: 4px;
+color: var(--olive-medium);
+margin-bottom: 6px;
+font-weight: 600;
+text-transform: uppercase;
 }
 
-.contact-title {
-    font-family: var(--font-heading);
-    font-size: 1.95rem;
-    color: #272d24;
-    font-weight: 500;
-    margin-bottom: 10px;
-    line-height: 1.25;
+.titulo-contacto {
+font-family: var(--font-heading);
+font-size: 1.95rem;
+color: #272d24;
+font-weight: 500;
+margin-bottom: 10px;
+line-height: 1.25;
 }
 
-.contact-desc {
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    color: #636a5e;
-    line-height: 1.6;
-    margin: 0 auto 22px auto;
-    max-width: 420px;
+.descripcion-contacto {
+font-family: var(--font-body);
+font-size: 0.92rem;
+color: #636a5e;
+line-height: 1.6;
+margin: 0 auto 22px auto;
+max-width: 420px;
 }
 
-/* Botón en armonía con el verde olivo de la boda */
-.btn-whatsapp-wedding {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    background-color: var(--olive-dark);
-    color: #ffffff;
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    font-weight: 500;
-    padding: 12px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(68, 78, 65, 0.22);
-    transition: all 0.25s ease;
-    border: 1.5px solid var(--olive-dark);
+.boton-whatsapp-boda {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 9px;
+background-color: var(--olive-dark);
+color: #ffffff;
+font-family: var(--font-body);
+font-size: 0.92rem;
+font-weight: 500;
+padding: 12px 28px;
+border-radius: 50px;
+text-decoration: none;
+box-shadow: 0 4px 14px rgba(68, 78, 65, 0.22);
+transition: all 0.25s ease;
+border: 1.5px solid var(--olive-dark);
 }
 
-.btn-whatsapp-wedding:hover {
-    background-color: var(--olive-dark-hover);
-    border-color: var(--olive-dark-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(68, 78, 65, 0.32);
-    color: #ffffff;
+.boton-whatsapp-boda:hover {
+background-color: var(--olive-dark-hover);
+border-color: var(--olive-dark-hover);
+transform: translateY(-2px);
+box-shadow: 0 6px 18px rgba(68, 78, 65, 0.32);
+color: #ffffff;
 }
 
-.whatsapp-icon {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
+.icono-whatsapp {
+width: 18px;
+height: 18px;
+flex-shrink: 0;
 }
 
-.contact-signoff {
-    margin-top: 18px;
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    color: #555e51;
-    letter-spacing: 0.5px;
-    margin-bottom: 0;
+.despedida-contacto {
+margin-top: 18px;
+font-family: var(--font-heading);
+font-size: 1.15rem;
+color: #10110f;
+letter-spacing: 0.5px;
+margin-bottom: 0;
 }
 
 @media (max-width: 900px) {
-    .dresscode-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        text-align: center;
-    }
+.cuadricula-vestimenta {
+grid-template-columns: 1fr;
+gap: 25px;
+text-align: center;
+}
 
-    .dresscode-left {
-        align-self: center;
-        text-align: center;
-    }
+.columna-izquierda-vestimenta {
+align-self: center;
+text-align: center;
+}
 
-    .dresscode-header-row {
-        justify-content: center;
-    }
+.fila-encabezado-vestimenta {
+justify-content: center;
+}
 
-    .dresscode-swatches {
-        justify-content: center;
-    }
+.muestras-colores-vestimenta {
+justify-content: center;
+}
 
-    .dresscode-swatches-avoid {
-        justify-content: center;
-    }
+.muestras-colores-evitar {
+justify-content: center;
+}
 
-    .dresscode-divider-line {
-        display: none;
-    }
+.linea-divisora-vestimenta {
+display: none;
+}
 
-    .dresscode-center {
-        order: 2;
-    }
+.columna-centro-vestimenta {
+order: 2;
+}
 
-    .dresscode-right {
-        order: 3;
-        text-align: center;
-    }
+.columna-derecha-vestimenta {
+order: 3;
+text-align: center;
+}
 
-    .avoid-heading {
-        text-align: center;
-    }
+.titulo-evitar {
+text-align: center;
+}
 
-    .avoid-list {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: fit-content;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0;
-        gap: 15px;
-    }
+.lista-evitar {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: fit-content;
+max-width: 100%;
+margin: 0 auto;
+padding: 0;
+gap: 15px;
+}
 
-    .avoid-list li {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 14px;
-        width: 100%;
-        text-align: left;
-    }
+.lista-evitar li {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 14px;
+width: 100%;
+text-align: left;
+}
 
-    .avoid-icon-box {
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
+.caja-icono-evitar {
+width: 28px;
+height: 28px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+
 }
 
 @media (max-width: 768px) {
-    section, footer {
-        padding: 20px 15px;
-    }
+section, footer {
+padding: 20px 15px;
+}
 
-    .card {
-        padding: 30px 20px;
-    }
+.tarjeta {
+padding: 30px 20px;
+}
 
-    /* Ubicaciones a 1 Columna */
-    .locations-section {
-        grid-template-columns: 1fr;
-    }
+.seccion-ubicaciones {
+grid-template-columns: 1fr;
+}
 
-    .location-card {
-        flex-direction: column;
-    }
+.tarjeta-ubicacion {
+flex-direction: column;
+}
 
-    .location-img-wrap {
-        width: 100%;
-        min-height: 200px;
-    }
+.envoltorio-imagen-ubicacion {
+width: 100%;
+min-height: 200px;
+}
 
-    .location-info {
-        width: 100%;
-        padding: 15px 20px 25px 20px;
-    }
+.informacion-ubicacion {
+width: 100%;
+padding: 15px 20px 25px 20px;
+}
 
-    /* Nuestra Historia en Móvil */
-    .story-card {
-        grid-template-columns: 1fr;
-        padding: 35px 20px;
-        gap: 30px;
-        text-align: center;
-    }
+.tarjeta-historia {
+grid-template-columns: 1fr;
+padding: 35px 20px;
+gap: 30px;
+text-align: center;
+}
 
-    .story-heading {
-        font-size: 1.9rem;
-    }
+.titulo-historia {
+font-size: 1.9rem;
+}
 
-    .btn-pill-outline {
-        margin: 0 auto;
-    }
+.boton-pildora-contorno {
+margin: 0 auto;
+}
 
-    /* Cuenta Regresiva Móvil */
-    .countdown-card {
-        padding: 35px 15px;
-    }
+/* Cuenta Regresiva Móvil */
+.tarjeta-cuenta-regresiva {
+padding: 35px 15px;
+}
 
-    .countdown-eyebrow {
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-    }
+.subtitulo-cuenta-regresiva {
+font-size: 0.95rem;
+letter-spacing: 2px;
+margin-bottom: 20px;
+}
 
-    .countdown-botanical {
-        width: 60px;
-        height: 90px;
-        opacity: 0.35;
-        left: 5px;
-    }
+.botanico-cuenta-regresiva {
+width: 60px;
+height: 90px;
+opacity: 0.35;
+left: 5px;
+}
 
-    .timer-col {
-        padding: 0 6px;
-    }
+.columna-temporizador {
+padding: 0 6px;
+}
 
-    .timer-col span {
-        font-size: 2.1rem;
-    }
+.columna-temporizador span {
+font-size: 2.1rem;
+}
 
-    .timer-col p {
-        font-size: 0.78rem;
-    }
+.columna-temporizador p {
+font-size: 0.78rem;
+}
 
-    .timer-divider {
-        height: 35px;
-    }
+.divisor-temporizador {
+height: 35px;
+}
 
-    /* Código de Vestimenta Móvil */
-    .dresscode-card {
-        padding: 35px 20px;
-    }
+/* Código de Vestimenta Móvil */
+.tarjeta-vestimenta {
+padding: 35px 20px;
+}
 
-    .dresscode-leaf-tl {
-        width: 95px;
-        opacity: 0.6;
-    }
+.hoja-superior-izquierda-vestimenta {
+width: 95px;
+opacity: 0.6;
+}
 
-    .dresscode-leaf-br {
-        width: 80px;
-        opacity: 0.6;
-    }
+.hoja-inferior-derecha-vestimenta {
+width: 80px;
+opacity: 0.6;
+}
 
-    .dresscode-couple-img {
-        max-height: 260px;
-    }
+.imagen-pareja-vestimenta {
+max-height: 260px;
+}
 
-    /* Un Mensaje Para Ti Móvil */
-    .message-card {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-        gap: 25px;
-        text-align: center;
-    }
+/* Un Mensaje Para Ti Móvil */
+.tarjeta-mensaje {
+grid-template-columns: 1fr;
+padding: 30px 20px;
+gap: 25px;
+text-align: center;
+}
 
-    .message-signature-wrap {
-        justify-content: center;
-    }
+.envoltorio-firma-mensaje {
+justify-content: center;
+}
 
-    .message-photo-col {
-        height: 200px;
-    }
+.columna-foto-mensaje {
+height: 200px;
+}
 
-    /* Mesa de Regalos Móvil */
-    .gifts-split-layout {
-        grid-template-columns: 1fr;
-    }
+/* Mesa de Regalos Móvil */
+.distribucion-dividida-regalos {
+grid-template-columns: 1fr;
+}
 
-    .gifts-text-col {
-        padding: 30px 20px;
-        text-align: center;
-    }
+.columna-texto-regalos {
+padding: 30px 20px;
+text-align: center;
+}
 
-    .gifts-icon-box {
-        margin: 0 auto 10px auto;
-    }
+.caja-icono-regalos {
+margin: 0 auto 10px auto;
+}
 
-    .btn-gift-toggle {
-        margin: 0 auto;
-    }
+.boton-alternar-regalos {
+margin: 0 auto;
+}
 
-    .gifts-image-col {
-        border-radius: 15px;
-    }
+.caja-datos-bancarios {
+border-right: 3px solid var(--olive-dark);
+}
 
-    /* Información Adicional Móvil */
-    .info-card {
-        padding: 30px 20px;
-    }
+.columna-imagen-regalos {
+border-radius: 15px;
+}
 
-    .info-title {
-        font-size: 1.85rem;
-        margin-bottom: 22px;
-    }
+/* Información Adicional Móvil */
+.tarjeta-informacion {
+padding: 30px 20px;
+}
 
-    .info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+.titulo-informacion {
+font-size: 1.85rem;
+margin-bottom: 22px;
+}
 
-    .info-item {
-        padding: 24px 18px;
-    }
+.cuadricula-informacion {
+grid-template-columns: 1fr;
+gap: 16px;
+}
 
-    /* Confirmación Asistencia (RSVP) Móvil */
-    .rsvp-card {
-        padding: 42px 20px 38px 20px;
-        text-align: center;
-    }
+.elemento-informacion {
+padding: 24px 18px;
+}
 
-    .rsvp-botanical-tl,
-    .rsvp-botanical-br {
-        width: 65px;
-        height: 80px;
-        opacity: 0.22;
-    }
+/* Confirmación Asistencia (RSVP) Móvil */
+.tarjeta-confirmacion {
+padding: 42px 20px 38px 20px;
+text-align: center;
+}
 
-    .rsvp-title {
-        font-size: 1.85rem;
-    }
+.botanico-superior-izquierdo-confirmacion,
+.botanico-inferior-derecho-confirmacion {
+width: 65px;
+height: 80px;
+opacity: 0.22;
+}
 
-    .rsvp-subtitle {
-        font-size: 0.92rem;
-        line-height: 1.5;
-    }
+.titulo-confirmacion {
+font-size: 1.85rem;
+}
 
-    .rsvp-notice-chip {
-        font-size: 0.82rem;
-        padding: 6px 14px;
-        margin-bottom: 24px;
-    }
+.subtitulo-confirmacion {
+font-size: 0.92rem;
+line-height: 1.5;
+}
 
-    .rsvp-buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        margin: 0 auto;
-        gap: 12px;
-    }
+.aviso-confirmacion {
+font-size: 0.82rem;
+padding: 6px 14px;
+margin-bottom: 24px;
+}
 
-    #btn-yes.btn-confirm,
-    #btn-no.btn-decline {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 20px !important;
-    }
+.botones-confirmacion {
+flex-direction: column;
+width: 100%;
+max-width: 320px;
+margin: 0 auto;
+gap: 12px;
+}
 
-    
-    /* Contacto Móvil */
-    .contact-card {
-        padding: 32px 20px 28px 20px;
-    }
+#btn-yes.boton-confirmar,
+#btn-no.boton-declinar {
+width: 100%;
+justify-content: center;
+padding: 14px 20px !important;
+}
 
-    .contact-title {
-        font-size: 1.65rem;
-    }
 
-    .btn-whatsapp-wedding {
-        width: 100%;
-        max-width: 280px;
-        padding: 12px 20px;
-    }
+/* Contacto Móvil */
+.tarjeta-contacto {
+padding: 32px 20px 28px 20px;
+}
 
-    /* Agradecimiento Móvil */
-    .thank-you-card {
-        padding: 50px 20px;
-    }
+.titulo-contacto {
+font-size: 1.65rem;
+}
 
-    .thanks-branch-left,
-    .thanks-branch-right {
-        width: 45px;
-        height: 90px;
-        opacity: 0.35;
-    }
+.boton-whatsapp-boda {
+width: 100%;
+max-width: 280px;
+padding: 12px 20px;
+}
 
-    .thank-you-title {
-        font-size: 1.8rem;
-    }
+/* Agradecimiento Móvil */
+.tarjeta-agradecimiento {
+padding: 50px 20px;
+}
+
+.rama-izquierda-agradecimiento,
+.rama-derecha-agradecimiento {
+width: 45px;
+height: 90px;
+opacity: 0.35;
+}
+
+.titulo-agradecimiento {
+font-size: 1.8rem;
+}
 }

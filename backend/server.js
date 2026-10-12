@@ -17,9 +17,9 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
-// ----------------------------------------------------
+// 
 // RUTAS PARA EL PANEL DE ADMINISTRADOR
-// ----------------------------------------------------
+// 
 
 // 1. Obtener todos los invitados (Para llenar la tabla)
 app.get('/api/invitados', async (req, res) => {
@@ -54,9 +54,9 @@ app.post('/api/invitados', async (req, res) => {
     }
 });
 
-// ----------------------------------------------------
+// 
 // RUTAS PARA LA INVITACIÓN DEL CLIENTE
-// ----------------------------------------------------
+// 
 
 // 3. Obtener los datos de un invitado específico (por token o por nombre)
 app.get('/api/invitacion/:identificador', async (req, res) => {

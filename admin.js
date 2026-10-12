@@ -10,7 +10,6 @@ const inputNombre = document.getElementById('nombre-invitado');
 const tablaInvitados = document.getElementById('tabla-invitados');
 
 // Función para transformar el nombre en un formato limpio para la URL
-// Ej: "Familia Pérez" -> "Familia-Perez"
 function generarSlug(nombre) {
     return nombre
         .normalize('NFD')
@@ -56,7 +55,6 @@ async function cargarInvitados() {
             const slug = generarSlug(invitado.nombres);
             
             // La URL ahora solo contiene "invitacion.html" y el nombre de la persona
-            // Ej: https://tudominio.com/invitacion.html?Familia-Perez
             const enlaceUnico = `${rutaBase}/invitacion.html?${slug}`;
             
             let claseEstado = 'pendiente';
@@ -80,9 +78,7 @@ async function cargarInvitados() {
     }
 }
 
-// ----------------------------------------------------
 // LÓGICA DE TIEMPO REAL (SOCKET.IO)
-// ----------------------------------------------------
 socket.on('actualizacionAsistencia', (datos) => {
     const estadoBadge = document.getElementById(`estado-${datos.token}`);
     if (estadoBadge) {
