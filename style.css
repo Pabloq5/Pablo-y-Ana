@@ -1,21 +1,19 @@
-/*
-1. IMPORTACIÓN DE FUENTES & VARIABLES DE COLOR
-*/
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Dancing+Script&family=Parisienne&family=Pinyon+Script&display=swap');
 
 :root {
---bg-color: #f7f6f0;           /* Fondo beige cálido / hueso */
---card-bg: #ffffff;           /* Fondo de tarjetas estándar */
---card-warm-bg: #faf8f3;      /* Fondo de tarjetas crema */
---text-main: #2e332c;         /* Texto principal grafito suave */
---text-muted: #666c61;        /* Texto secundario atenuado */
---olive-dark: #444e41;        /* Verde olivo intenso (botones) */
---olive-dark-hover: #333c31;  /* Hover verde olivo */
---olive-medium: #5b6555;      /* Verde olivo medio */
---olive-light: #839274;       /* Verde salvia suave */
---sage-thanks: #cbd0c3;       /* Verde salvia claro para agradecimiento */
+--bg-color: #f7f6f0;           
+--card-bg: #ffffff;           
+--card-warm-bg: #faf8f3;     
+--text-main: #2e332c;       
+--text-muted: #666c61;      
+--olive-dark: #444e41;       
+--olive-dark-hover: #333c31;  
+--olive-medium: #5b6555;      
+--olive-light: #839274;      
+--sage-thanks: #cbd0c3;       
 --border-subtle: rgba(0, 0, 0, 0.05);
 
 --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -24,8 +22,9 @@
 }
 
 /*
-2. ESTILOS GENERALES
+ESTILOS GENERALES
 */
+
 * {
 margin: 0;
 padding: 0;
@@ -55,7 +54,10 @@ margin: 0 auto;
 padding: 30px 20px;
 }
 
-/* Tarjeta estándar */
+/*
+Tarjeta estándar 
+*/
+
 .tarjeta {
 background-color: var(--card-bg);
 border-radius: 18px;
@@ -75,8 +77,9 @@ display: block;
 }
 
 /*
-3. SECCIÓN PRINCIPAL (HERO)
+SECCIÓN PRINCIPAL
 */
+
 .seccion-portada {
 min-height: 100vh;
 max-width: 100%;
@@ -200,8 +203,9 @@ letter-spacing: 2px;
 }
 
 /*
-4. NUESTRA HISTORIA
+NUESTRA HISTORIA
 */
+
 .tarjeta-historia {
 display: grid;
 grid-template-columns: 1.15fr 0.85fr;
@@ -322,8 +326,9 @@ opacity: 0.75;
 }
 
 /*
-5. UBICACIONES (CEREMONIA Y RECEPCIÓN)
+UBICACIONES 
 */
+
 .seccion-ubicaciones {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -442,8 +447,9 @@ height: 14px;
 }
 
 /*
-6. CUENTA REGRESIVA (FALTAN PARA EL GRAN DÍA)
+CUENTA REGRESIVA 
 */
+
 .seccion-cuenta-regresiva {
 padding-top: 15px;
 padding-bottom: 15px;
@@ -525,8 +531,9 @@ background-color: rgba(70, 80, 68, 0.25);
 }
 
 /* 
-CÓDIGO DE VESTIMENTA (Diseño fiel a imagen de referencia)
+CÓDIGO DE VESTIMENTA 
 */
+
 .tarjeta-vestimenta {
 background-color: #ffffff;
 border-radius: 18px;
@@ -546,7 +553,6 @@ position: relative;
 z-index: 2;
 }
 
-/* Columna Izquierda: Información posicionada más arriba */
 .columna-izquierda-vestimenta {
 text-align: left;
 align-self: flex-start;
@@ -632,7 +638,10 @@ flex-shrink: 0;
 transform: scale(1.15);
 }
 
-/* Bloque de colores a evitar */
+/* 
+Bloque de colores a evitar
+*/
+
 .bloque-colores-evitar {
 margin-top: 2px;
 padding-top: 12px;
@@ -683,8 +692,6 @@ line-height: 1.3;
 margin-top: 20px;
 }
 
-
-/* Columna Central: Pareja Ilustrada sin marco rectangular */
 .columna-centro-vestimenta {
 display: flex;
 justify-content: center;
@@ -700,14 +707,12 @@ display: block;
 background: transparent;
 }
 
-/* Divisor Vertical */
 .linea-divisora-vestimenta {
 width: 1px;
 height: 220px;
 background-color: #d6d1c4;
 }
 
-/* Columna Derecha: Evita */
 .columna-derecha-vestimenta {
 text-align: left;
 }
@@ -776,6 +781,7 @@ height: 24px;
 /*
 UN MENSAJE PARA TI
 */
+
 .tarjeta-mensaje {
 display: grid;
 grid-template-columns: 1.3fr 1fr;
@@ -846,8 +852,9 @@ display: block;
 }
 
 /*
-MESA DE REGALOS (Diseño fiel a imagen de referencia)
+MESA DE REGALOS 
 */
+
 .tarjeta-regalos {
 background-color: #ffffff;
 border-radius: 18px;
@@ -902,8 +909,6 @@ font-size: 0.88rem;
 padding: 10px 24px;
 }
 
-
-
 .caja-datos-bancarios {
 background-color: #faf9f5;
 padding: 18px 20px;
@@ -948,8 +953,9 @@ display: block;
 }
 
 /*
-INFORMACIÓN ADICIONAL (Diseño organizado en 3 columnas)
+INFORMACIÓN ADICIONAL 
 */
+
 .tarjeta-informacion {
 background-color: #ffffff;
 border-radius: 18px;
@@ -1030,8 +1036,9 @@ margin: 0;
 }
 
 /*
-CONFIRMACIÓN DE ASISTENCIA (RSVP - Diseño Destacado y Llamativo)
+CONFIRMACIÓN DE ASISTENCIA 
 */
+
 .seccion-confirmacion {
 padding-top: 35px;
 padding-bottom: 35px;
@@ -1051,7 +1058,6 @@ position: relative;
 overflow: hidden;
 }
 
-/* Ramas decorativas botánicas en esquinas */
 .botanico-superior-izquierdo-confirmacion {
 position: absolute;
 top: 0;
@@ -1161,7 +1167,10 @@ flex-wrap: wrap;
 width: 100%;
 }
 
-/* Botón SÍ, ASISTIRÉ */
+/* 
+Botón SÍ, ASISTIRÉ 
+*/
+
 #btn-yes.boton-confirmar,
 .boton-confirmar {
 background: linear-gradient(135deg, #444e41 0%, #353e32 100%) !important;
@@ -1188,7 +1197,10 @@ transform: translateY(-2px) scale(1.02);
 box-shadow: 0 8px 24px rgba(53, 62, 50, 0.38);
 }
 
-/* Botón NO PODRÉ ASISTIR */
+/* 
+Botón NO PODRÉ ASISTIR 
+*/
+
 #btn-no.boton-declinar,
 .boton-declinar {
 background-color: #ffffff !important;
@@ -1247,6 +1259,7 @@ border-radius: 30px;
 /*
 AGRADECIMIENTO
 */
+
 .seccion-agradecimiento {
 padding-top: 25px;
 padding-bottom: 60px;
@@ -1333,6 +1346,7 @@ line-height: 1;
 /*
 BOTÓN DE MÚSICA
 */
+
 .boton-musica-flotante {
 position: fixed;
 bottom: 20px;
@@ -1379,6 +1393,7 @@ box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 /*
 SECCIÓN DE DUDAS Y CONTACTO 
 */
+
 .seccion-contacto {
 padding-top: 5px;
 padding-bottom: 75px;
@@ -1631,7 +1646,6 @@ font-size: 0.78rem;
 height: 35px;
 }
 
-/* Código de Vestimenta Móvil */
 .tarjeta-vestimenta {
 padding: 35px 20px;
 }
@@ -1650,7 +1664,6 @@ opacity: 0.6;
 max-height: 260px;
 }
 
-/* Un Mensaje Para Ti Móvil */
 .tarjeta-mensaje {
 grid-template-columns: 1fr;
 padding: 30px 20px;
@@ -1666,7 +1679,6 @@ justify-content: center;
 height: 200px;
 }
 
-/* Mesa de Regalos Móvil */
 .distribucion-dividida-regalos {
 grid-template-columns: 1fr;
 }
@@ -1692,7 +1704,6 @@ border-right: 3px solid var(--olive-dark);
 border-radius: 15px;
 }
 
-/* Información Adicional Móvil */
 .tarjeta-informacion {
 padding: 30px 20px;
 }
@@ -1711,7 +1722,6 @@ gap: 16px;
 padding: 24px 18px;
 }
 
-/* Confirmación Asistencia (RSVP) Móvil */
 .tarjeta-confirmacion {
 padding: 42px 20px 38px 20px;
 text-align: center;
@@ -1754,8 +1764,6 @@ justify-content: center;
 padding: 14px 20px !important;
 }
 
-
-/* Contacto Móvil */
 .tarjeta-contacto {
 padding: 32px 20px 28px 20px;
 }
@@ -1770,7 +1778,6 @@ max-width: 280px;
 padding: 12px 20px;
 }
 
-/* Agradecimiento Móvil */
 .tarjeta-agradecimiento {
 padding: 50px 20px;
 }

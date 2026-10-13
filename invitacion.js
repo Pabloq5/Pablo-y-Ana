@@ -1,14 +1,10 @@
-// URL de tu servidor backend en Render
 const API_URL = 'https://backend-boda-dghi.onrender.com/api';
 
 console.log("1. El archivo invitacion.js cargó correctamente");
 
-// Extraer el identificador o nombre de la persona invitada desde la URL
-// Soporta formatos: ?Familia-Perez, ?invitado=Familia-Perez, ?para=Familia-Perez, o ?token=0ff42c03
 const parametrosURL = new URLSearchParams(window.location.search);
 let identificador = parametrosURL.get('invitado') || parametrosURL.get('para') || parametrosURL.get('token');
 
-// Si la URL viene directamente como /invitacion.html?Familia-Perez (sin clave)
 if (!identificador && window.location.search.length > 1) {
     const rawQuery = window.location.search.substring(1).split('&')[0];
     if (rawQuery && !rawQuery.includes('=')) {
@@ -49,7 +45,7 @@ async function cargarInvitacion() {
         console.log("3. Consultando información del invitado...");
         let invitado = null;
 
-        // 1. Intento de búsqueda directa por token o slug
+        // Intento de búsqueda directa por token o slug
         try {
             const respuestaDirecta = await fetch(`${API_URL}/invitacion/${encodeURIComponent(identificador)}`);
             if (respuestaDirecta.ok) {
@@ -59,7 +55,6 @@ async function cargarInvitacion() {
             console.log("No encontrado directamente, buscando por nombre...");
         }
 
-        // 2. Si no se encontró directo, buscamos en la lista completa comparando nombres
         if (!invitado) {
             const respuestaLista = await fetch(`${API_URL}/invitados`);
             if (respuestaLista.ok) {
@@ -77,10 +72,7 @@ async function cargarInvitacion() {
         if (invitado) {
             tokenActivo = invitado.token;
             tituloNombre.textContent = invitado.nombres;
-
-            // Validamos si ya pasó el tiempo límite de modificación
             const ahora = new Date();
-            // Fecha límite oficial: 30 de octubre de 2026 hasta las 23:59
             const fechaLimite = new Date('2026-10-30T23:59:59');
 
             if (ahora > fechaLimite) {
@@ -146,7 +138,7 @@ if (btnNoAsistire) btnNoAsistire.addEventListener('click', () => enviarRespuesta
 cargarInvitacion();
 
 // LÓGICA DEL CONTADOR DE TIEMPO 
-const fechaBoda = new Date(2026, 11, 18, 14, 30, 0).getTime(); // 18 de Diciembre de 2026 a las 14:30
+const fechaBoda = new Date(2026, 11, 18, 14, 30, 0).getTime(); 
 const elementoDias = document.getElementById('dias');
 const elementoHoras = document.getElementById('horas');
 const elementoMinutos = document.getElementById('minutos');
@@ -177,7 +169,7 @@ if (elementoDias && elementoHoras && elementoMinutos && elementoSegundos) {
     }, 1000);
 }
 
-// LÓGICA DE LA MÚSICA DE FONDO (COMPATIBLE CON MÓVIL Y DESKTOP)
+// LÓGICA DE LA MÚSICA DE FONDO 
 const reproductorMusica = document.getElementById('musica-fondo');
 const btnMusica = document.getElementById('btn-musica');
 
@@ -187,7 +179,6 @@ if (reproductorMusica) {
     try {
         reproductorMusica.volume = 0.35; // Volumen óptimo
     } catch (e) {
-        // En iOS Safari el volumen es de solo lectura por hardware
     }
 }
 
@@ -250,15 +241,15 @@ function removerListenersInteraccion() {
     });
 }
 
-// 1. Intentamos reproducción automática directa (funciona en desktop si hay permiso)
+// Intentamos reproducción automática directa (funciona en desktop si hay permiso)
 window.addEventListener('load', () => {
     encenderMusica();
 });
 
-// 2. Escuchamos el primer toque/scroll en el celular para desbloquear el audio inmediatamente
+// Escuchamos el primer toque/scroll en el celular para desbloquear el audio inmediatamente
 agregarListenersInteraccion();
 
-// 3. También activar al hacer clic en el botón de bienvenida "Ver invitación →"
+// También activar al hacer clic en el botón de bienvenida "Ver invitación →"
 const btnHero = document.querySelector('.boton-portada');
 if (btnHero) {
     btnHero.addEventListener('click', () => {
@@ -266,7 +257,7 @@ if (btnHero) {
     });
 }
 
-// 4. Control manual para pausar/reanudar cuando el invitado lo desee
+// Control manual para pausar/reanudar cuando el invitado lo desee
 if (btnMusica && reproductorMusica) {
     btnMusica.addEventListener('click', (e) => {
         e.stopPropagation();
